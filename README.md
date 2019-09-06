@@ -16,6 +16,7 @@
 + Terminal: URXVT (font: Hack)
 + Colors: Scorched & Crackpot (from Rainglow.io)
 
+Both themes are available for VS Code, and Firefox themes are in `firefox/`.
 
 ## Scorched
 
@@ -24,6 +25,4 @@
 ## Crackpot
 
 ![Neofetch](/screenshot2.png?raw=true)
-#44272A,#44272A,#160D0E,#FFFFFF,#A58163,#FFFFFF,#F6EA82,#BD4549
 
-#292740,#526086,#A58163,#FFFFFF,#A58163,#929292,#AF535D,#BD4549
