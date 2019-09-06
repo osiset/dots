@@ -96,7 +96,7 @@ bindsym $super+Shift+f exec thunar
 bindsym $super+Shift+c exec code
 
 # PulseAudio quick access
-bindsym $super+Shift+a exec pavucontrol
+bindsym $super+Shift+a exec ~/bin/audio-switch
 
 # Logout actions
 bindsym $ctl+$alt+Delete exec xfce4-session-logout

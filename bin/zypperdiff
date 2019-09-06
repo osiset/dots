@@ -1,0 +1,76 @@
+#!/bin/bash
+
+zypper_command=$1
+
+[ -z "$1" ] && exit 1
+
+confdir=~/.config/$(basename $0)
+config=$confdir/config
+logdir=$confdir/logs
+
+[ -f $config ] && . $config
+
+shift
+
+# clean package cache in /var/cache/zypp/ so we can easily determine exactly what packages are downloaded
+sudo zypper clean
+
+# download packages only with -d option
+sudo zypper $zypper_command -d $* || exit 1
+
+# compare changelogs between downloaded rpm packages and installed packages
+
+packages=$(find /var/cache/zypp/ -name '*.rpm')
+
+[ -z "$packages" ] && exit 0
+
+
+temp_chg=$(mktemp)
+temp_diff=$(mktemp)
+temp_pkg_diff=$(mktemp)
+
+trap "rm -f $temp_chg $temp_diff $temp_pkg_diff" EXIT
+
+pkg_sep=$(printf '=%.0s' {1..72})
+
+for f in $packages
+do
+    package=$(rpm -q  --qf "%{NAME}" -p $f)
+
+    if rpm -q $package > /dev/null; then
+
+	# package has an older version installed
+	
+	rpm -q -p --changelog $f > $temp_chg
+	rpm -q $package --changelog | diff --unchanged-line-format= --old-line-format= --new-line-format='%L' - $temp_chg > $temp_pkg_diff
+
+	if [ -s $temp_pkg_diff ]; then
+
+	    echo -e "$pkg_sep\n$package: $(rpm -q --qf '%{SUMMARY}' $package)\n$pkg_sep\n" >> $temp_diff
+
+	    cat $temp_pkg_diff >> $temp_diff
+
+	    echo -e "\n" >> $temp_diff
+	fi
+
+    fi
+done
+
+# display diff using PAGER
+
+if [ -s $temp_diff ]; then
+    [ -z "$PAGER" ] && PAGER=less
+    $PAGER $temp_diff
+
+    # eventually proceed with install
+
+    read -p "Proceed to install packages (yn) ? " -n 1 -r
+    echo
+    [[ ! $REPLY =~ ^[y]$ ]] && exit 1
+fi
+
+sudo zypper $zypper_command -y --auto-agree-with-licenses $*
+
+if (( $? == 0 )) && [[ $enable_log == y ]]; then
+   mkdir -p $logdir && mv $temp_diff $logdir/$(date +%FT%T).txt
+fi   
