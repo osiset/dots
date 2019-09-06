@@ -1,0 +1,9 @@
+[user]
+	email = tyler@ohmybrew.com
+	name = Tyler King
+[url "ssh://git@bitbucket.org/"]
+  insteadOf = https://bitbucket.org/
+[core]
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[alias]
+	conflicts = !git ls-files -u | cut -f 2 | sort -u

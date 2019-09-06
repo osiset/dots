@@ -1,0 +1,252 @@
+
+###############
+# Modifiers
+###############
+set $super Mod4
+set $alt Mod1
+set $ctl Control
+set $wk1 "web"
+set $wk2 "code"
+set $wk3 "mail"
+set $wk4 "misc"
+set $wk5 "void"
+
+###############
+# Fonts
+###############
+font pango: Ubuntu 10
+
+###############
+# Colors
+###############
+# Scorched - Rainglow
+#set_from_resource $cfg foreground #baa0a2
+#set_from_resource $cbg backgrounf #160d0e
+#set_from_resource $cred color6 #bd4549
+#set_from_resource $cyellow color4 #F6EA82
+#set_from_resource $cdullred color0 #44272a
+
+# Crackpot - Rainglow
+set_from_resource $cfg foreground #baa0a2
+set_from_resource $cbg backgrounf #160d0e
+set_from_resource $cred color1 #bd4549
+set_from_resource $cyellow color3 #F6EA82
+set_from_resource $cdullred color2 #44272a
+
+# class                 border   backgr.  text    indicator child_border
+client.focused          $cred    $cred    #ffffff #e8e382   $cred
+client.focused_inactive #333333  #5f676a  #ffffff #484e50   #5f676a
+client.unfocused        $cdulled $cdulled #888888 $cdulled  #222222
+client.urgent           #2f343a  #900000  #ffffff #900000   #900000
+client.placeholder      #000000  #0c0c0c  #ffffff #000000   #0c0c0c
+client.background       #ffffff
+
+###############
+# General settings
+###############
+# Use Mouse+$super to drag floating windows to their wanted position
+floating_modifier $super
+
+# Focus
+focus_follows_mouse yes
+
+# Back-and-forth by pressing same workspace keybinds
+workspace_auto_back_and_forth yes
+
+###############
+# General settings
+###############
+## Try to kill Plasma
+#exec --no-startup-id wmctrl -c Plasma
+
+# Run Compton for composition
+exec --no-startup-id compton -b --config ~/.config/compton.conf
+
+# Run Dunst (notify)
+exec --no-startup-id dunst -conf ~/.config/dunstrc
+
+# Run Nitrogen for wallpaper
+exec --no-startup-id nitrogen --restore
+
+# Run Polybar
+exec --no-startup-id ~/.config/polybar/launch
+
+# Run Clipboard (ctl+alt+c)
+exec --no-startup-id clipit --no-icon --daemon
+
+###############
+# App bindings
+###############
+# Terminal
+bindsym $super+Return exec urxvt
+
+# Rofi for quick access (drun)
+bindsym $super+x exec rofi -show drun
+
+# Rofi for quick access (windows)
+bindsym $super+shift+x exec rofi -show window
+
+# Firefox for browsing
+bindsym $super+Shift+w exec firefox
+
+# Dolphin for files
+bindsym $super+Shift+f exec thunar
+
+# VSCode for programming
+bindsym $super+Shift+c exec code
+
+# PulseAudio quick access
+bindsym $super+Shift+a exec pavucontrol
+
+# Logout actions
+bindsym $ctl+$alt+Delete exec xfce4-session-logout
+
+# Screenshots
+bindsym Print exec flameshot full -c -p ~/Pictures/Screenshots
+
+# Screenshots (manual)
+bindsym $super+e exec flameshot gui -p ~/Pictures/Screenshots
+###############
+# Keybinds
+###############
+# Kill focused window
+bindsym $super+c kill
+bindsym $alt+F4 kill
+
+# Change focus
+bindsym $super+Left focus left
+bindsym $super+Down focus down
+bindsym $super+Up focus up
+bindsym $super+Right focus right
+
+# Move focused window
+bindsym $super+Shift+Left move left
+bindsym $super+Shift+Down move down
+bindsym $super+Shift+Up move up
+bindsym $super+Shift+Right move right
+
+# Split in horizontal orientation
+bindsym $super+h split h
+
+# Split in vertical orientation
+bindsym $super+v split v
+
+# Enter fullscreen mode for the focused container
+bindsym $super+f fullscreen toggle
+
+# Change container layout split
+bindsym $super+s layout stacking
+bindsym $super+w layout tabbed
+bindsym $super+o layout toggle split
+
+# Toggle tiling / floating
+bindsym $super+space floating toggle
+
+# Change focus between tiling / floating windows
+bindsym $super+Shift+space focus mode_toggle
+
+# Switch to workspace
+bindsym $alt+Control+Right workspace next
+bindsym $alt+Control+Left workspace prev
+bindsym $super+1 workspace $wk1
+bindsym $super+2 workspace $wk2
+bindsym $super+3 workspace $wk3
+bindsym $super+4 workspace $wk4
+bindsym $super+5 workspace $wk5
+
+# Move focused container to workspace
+bindsym $super+Shift+1 move container to workspace $wk1
+bindsym $super+Shift+2 move container to workspace $wk2
+bindsym $super+Shift+3 move container to workspace $wk3
+bindsym $super+Shift+4 move container to workspace $wk4
+bindsym $super+Shift+5 move container to workspace $wk5
+
+# Alt-tab like feature
+bindsym $super+Tab workspace back_and_forth
+
+# Restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $super+Shift+r restart
+
+# Pulse Audio controls
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && paplay --volume=40000 --device=@DEFAULT_SINK@ /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && paplay --volume=40000 --device=@DEFAULT_SINK@ /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && paplay --volume=40000 --device=@DEFAULT_SINK@ /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
+bindsym XF86AudioMicMute exec --no-startup-id amixer set Capture toggle && paplay --volume=40000 --device=@DEFAULT_SINK@ /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
+
+# Sreen brightness controls
+#bindsym XF86MonBrightnessUp exec xbacklight -inc 1 # increase screen brightness
+#bindsym XF86MonBrightnessDown exec xbacklight -dec 1 # decrease screen brightness
+
+# Media player controls
+bindsym $ctl+$alt+Down exec playerctl play-pause
+bindsym $ctl+$alt+Next exec playerctl next
+bindsym $ctl+$alt+Prior exec playerctl previous
+
+###############
+# Assignments
+###############
+assign [class="Firefox"] $wk1
+assign [class="Code"] $wk2
+assign [class="Slack"] $wk1
+assign [class="Thunderbird"] $wk3
+
+###############
+# Special modes
+###############
+# Resize window
+mode "resize" {
+        bindsym Left resize shrink width 2 px or 2 ppt
+        bindsym Down resize grow height 2 px or 2 ppt
+        bindsym Up resize shrink height 2 px or 2 ppt
+        bindsym Right resize grow width 2 px or 2 ppt
+        
+        # Back to normal
+        bindsym Return mode "default"
+}
+bindsym $super+r mode "resize"
+
+# Moving floating windows
+mode "move" {
+    bindsym $mod+Tab focus right
+
+    bindsym Left  move left
+    bindsym Down  move down
+    bindsym Up    move up
+    bindsym Right move right
+
+    # Back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+bindsym $super+m mode "move" focus floating
+
+###############
+# Window rules
+###############
+# for_window
+#for_window [title="Desktop — Plasma"] kill, floating enable, border none
+for_window [class=".*"] border pixel 4
+for_window [class=nitrogen|Pavucontrol] floating enable
+for_window [class=URxvt|Firefox|libreoffice*|Gimp*|Inkscape|Vlc] focus
+for_window [window_role="pop-up"] floating enable
+for_window [window_role="bubble"] floating enable
+for_window [window_role="task_dialog"] floating enable
+for_window [window_role="Preferences"] floating enable
+for_window [window_role="About"] floating enable 
+for_window [window_type="dialog"] floating enable
+for_window [window_type="menu"] floating enable
+#for_window [class="plasmashell"] floating enable, border none
+#for_window [class="Plasma"] floating enable, border none
+#for_window [title="plasma-desktop"] floating enable, border none
+for_window [title="win7"] floating enable, border none
+#for_window [class="krunner"] floating enable, border none
+#for_window [class="Kmix"] floating enable, border none
+#for_window [class="Klipper"] floating enable, border none
+for_window [class="qlipper"] floating enable, border none
+#for_window [class="Plasmoidviewer"] floating enable, border none
+#for_window [class="kcmshell5"] resize set 800px 500px
+for_window [class="Pavucontrol"] resize set 800px 500px
+
+# Don’t let notifications and non-interactive pop-up windows steal focus
+#no_focus [class="plasmashell" window_type="notification"]
+#no_focus [class="plasmashell" window_type="on_screen_display"]

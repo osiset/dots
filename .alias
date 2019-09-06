@@ -1,0 +1,37 @@
+gocover () { 
+    t="/tmp/go-cover.$$.tmp"
+    go test -coverprofile=$t $@ && go tool cover -html=$t && unlink $t
+}
+
+# Reload Xresources file
+alias re_xresources='xrdb -load ~/.Xresources'
+
+# Reload KDE
+alias re_kde='kquitapp5 plasmashell && kstart5 plasmashell'
+
+# Reload Polybar
+alias re_polybar='~/.config/polybar/launch'
+
+# Stop all Dockers
+alias docker_stop_all='docker stop $(docker ps -aq)'
+
+# Redo command with root
+alias please='sudo $(fc -ln -1)'
+
+# Coloring
+alias ls='ls --color=auto'
+alias grep='grep --colour=auto'
+alias cp='cp -i'
+alias ll='ls -lah'
+alias mv='mv -i'
+
+# Quick accesses
+alias dev='cd ~/Development'
+alias devlr='cd ~/Development/Li*'
+alias devgh='cd ~/Development/Github/'
+
+# Quick edit i3 config
+alias i3conf='nano ~/.config/i3/config'
+
+# Quick edit Polybar config
+alias polybarconf='nano ~/.config/polybar/config.ini'

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+bar_icon=""
+
+while true; do
+    updates=$(zypper lu | grep 'v ' | wc -l)
+    echo "$bar_icon $updates updates"
+    sleep 3600
+done

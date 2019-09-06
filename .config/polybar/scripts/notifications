@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+bar_icon=""
+echo "$bar_icon  "
