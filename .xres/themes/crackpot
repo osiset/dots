@@ -1,0 +1,58 @@
+!! Colors (Crackpot - Rainglow)
+! defines
+#define FOREGROUND #b3b3b3
+#define BACKGROUND #292740
+#define COLOR0 #26243c
+#define COLOR8 #26243c
+#define COLOR1 #526086
+#define COLOR9 #526086
+#define COLOR2 #843a42
+#define COLOR10 #843a42
+#define COLOR3 #9b7a45
+#define COLOR11 #9b7a45
+#define COLOR4 #5f819d
+#define COLOR12 #5f819d
+#define COLOR5 #85678f
+#define COLOR13 #85678f
+#define COLOR6 #af535d
+#define COLOR14 #af535d
+#define COLOR7 #c5c8c6
+#define COLOR15 #c5c8c6
+
+! special
+*foreground:   FOREGROUND
+*background:   BACKGROUND
+*cursorColor:  #929292
+
+! black
+*color0:       COLOR0
+*color8:       COLOR8
+
+! red
+*color1:       COLOR1
+*color9:       COLOR9
+
+! green
+*color2:       COLOR2
+*color10:      COLOR10
+
+! yellow
+*color3:       COLOR3
+*color11:      COLOR11
+
+! blue
+*color4:       COLOR4
+*color12:      COLOR12
+
+! magenta
+*color5:       COLOR5
+*color13:      COLOR13
+
+! cyan
+*color6:       COLOR6
+*color14:      COLOR14
+
+! white
+*color7:       COLOR7
+*color15:      COLOR15
+

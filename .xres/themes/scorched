@@ -1,0 +1,58 @@
+!! Colors (Scorched - Rainglow)
+! defines
+#define FOREGROUND #baa0a2
+#define BACKGROUND #160d0e
+#define COLOR0 #44272a
+#define COLOR8 #44272a
+#define COLOR1 #a54242
+#define COLOR9 #a54242
+#define COLOR2 #d39452
+#define COLOR10 #d39452
+#define COLOR3 #e77757
+#define COLOR11 #e77757
+#define COLOR4 #f6ea82
+#define COLOR12 #f6ea82
+#define COLOR5 #a58163
+#define COLOR13 #a58163
+#define COLOR6 #bd4549
+#define COLOR14 #bd4549
+#define COLOR7 #707880
+#define COLOR15 #707880
+
+! special
+*foreground:   FOREGROUND
+*background:   BACKGROUND
+*cursorColor:  #baa0a2
+
+! black
+*color0:       COLOR0
+*color8:       COLOR8
+
+! red
+*color1:       COLOR1
+*color9:       COLOR9
+
+! green
+*color2:       COLOR2
+*color10:      COLOR10
+
+! yellow
+*color3:       COLOR3
+*color11:      COLOR11
+
+! blue
+*color4:       COLOR4
+*color12:      COLOR12
+
+! magenta
+*color5:       COLOR5
+*color13:      COLOR13
+
+! cyan
+*color6:       COLOR6
+*color14:      COLOR14
+
+! white
+*color7:       COLOR7
+*color15:      COLOR15
+

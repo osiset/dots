@@ -1,0 +1,50 @@
+!! Rofi
+! Mode
+rofi.modi: drun
+
+! Command executed on accep-entry-custom for window modus
+rofi.window-command: xkill -id {window}
+
+! Do a more fuzzy matching
+rofi.fuzzy: true
+
+! Use glob matching
+rofi.glob: false
+
+! Use regex matching
+rofi.regex: false
+
+! Tokenize input string
+rofi.tokenize: true
+
+! Num of results
+rofi.lines: 5
+
+! Row height
+rofi.eh: 2
+
+! Padding
+rofi.padding: 100
+
+! Full screen
+rofi.fullscreen: false
+
+! Border width
+rofi.bw: 3
+
+! Sep style
+rofi.separator-style: none
+
+! Scrollbar
+rofi.hide-scrollbar: true
+
+
+! Colors
+!                  background, border, separator
+rofi.color-window: BACKGROUND, COLOR1, COLOR3
+! State:           'bg',     'fg',     'bgalt',  'hlbg',   'hlfg'
+rofi.color-normal: BACKGROUND, FOREGROUND, BACKGROUND, COLOR3, FOREGROUND
+
+! Fonts
+rofi.font: Hack 12
+
