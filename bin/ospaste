@@ -22,14 +22,12 @@
  ##############################################################################
 
 # By default paste code from stdin
-
 INPUT="<-"
 TYPE="code"
 API_KEY=""
 
 # Read configuration file
-
-[ -r ~/.config/susepaste ] && . ~/config/.susepaste
+[ -r ~/.config/susepaste ] && . ~/.config/susepaste
 
 # Process the command line parameters
 
@@ -69,7 +67,6 @@ while [ "$2" ]; do
 done
 
 # Key handling
-
 if [ "$KEY" ]; then
 	if [ "`expr substr "$KEY" 1 4`" = "KEY:" ]; then
 		KEY="`echo "$KEY" | sed 's|^KEY:||'`"
@@ -78,7 +75,6 @@ if [ "$KEY" ]; then
 fi
 
 # Do we want to use stdin or paste content of the file?
-
 if [ "$1" ]; then
 	if [ \! -r "$1" ]; then
 		echo "Can't read $1"
