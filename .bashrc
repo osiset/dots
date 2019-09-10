@@ -1,5 +1,6 @@
 export EDITOR=/usr/bin/nano
 test -s ~/.alias && . ~/.alias || true
+. ~/.secret
 
 # Not needed now
 #export ANDROID_HOME=$HOME/Android/Sdk

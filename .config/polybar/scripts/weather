@@ -1,0 +1,49 @@
+#!/bin/sh
+
+get_icon() {
+    case $1 in
+        01d) icon="";;
+        01n) icon="";;
+        02d) icon="";;
+        02n) icon="";;
+        03*) icon="";;
+        04*) icon="";;
+        09d) icon="";;
+        09n) icon="";;
+        10d) icon="";;
+        10n) icon="";;
+        11d) icon="";;
+        11n) icon="";;
+        13d) icon="";;
+        13n) icon="";;
+        50d) icon="";;
+        50n) icon="";;
+        *) icon="";
+    esac
+
+    echo $icon
+}
+
+UNITS="metric"
+SYMBOL="°C"
+API="https://api.openweathermap.org/data/2.5"
+
+location=$(curl -sf https://location.services.mozilla.com/v1/geolocate?key=geoclue)
+if [ -n "$location" ]; then
+    location_lat="$(echo "$location" | jq '.location.lat')"
+    location_lon="$(echo "$location" | jq '.location.lng')"
+fi;
+
+weather=$(curl -sf "$API/weather?appid=$OW_KEY&lat=$location_lat&lon=$location_lon&units=$UNITS")
+if [ -n "$weather" ]; then
+    weather_temp=$(echo "$weather" | jq ".main.temp" | cut -d "." -f 1)
+    weather_icon=$(echo "$weather" | jq -r ".weather[0].icon")
+    weather_city_id=$(echo "$weather" | jq ".id")
+
+    if [ "$1" == "open" ]; then
+        xdg-open "https://openweathermap.org/city/$weather_city_id" >/dev/null 2>&1
+    else
+        echo "$(get_icon "$weather_icon")" "$weather_temp$SYMBOL"
+    fi;
+fi
+
