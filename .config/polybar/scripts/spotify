@@ -97,12 +97,12 @@ try:
 
     # Handle main label
 
-    artist = fix_string(metadata['xesam:artist'][0]) if metadata['xesam:artist'] else ''
-    song = fix_string(metadata['xesam:title']) if metadata['xesam:title'] else ''
-    album = fix_string(metadata['xesam:album']) if metadata['xesam:album'] else ''
+    artist = fix_string(metadata['xesam:artist'][0]) if metadata['xesam:artist'] else 'Spotify'
+    song = fix_string(metadata['xesam:title']) if metadata['xesam:title'] else 'Unknown'
+    album = fix_string(metadata['xesam:album']) if metadata['xesam:album'] else 'Unknown'
 
     if not artist and not song and not album:
-        print('')
+        print('Unknown')
     else:
         if len(song) > trunclen:
             song = song[0:trunclen]
@@ -119,6 +119,6 @@ try:
 
 except Exception as e:
     if isinstance(e, dbus.exceptions.DBusException):
-        print('')
+        print('Off')
     else:
         print(e)
