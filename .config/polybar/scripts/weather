@@ -28,10 +28,15 @@ UNITS="metric"
 SYMBOL="°C"
 API="https://api.openweathermap.org/data/2.5"
 
-location=$(curl -sf https://location.services.mozilla.com/v1/geolocate?key=geoclue)
-if [ -n "$location" ]; then
-    location_lat="$(echo "$location" | jq '.location.lat')"
-    location_lon="$(echo "$location" | jq '.location.lng')"
+if [ -z "$OW_LAT" ]; then
+    location=$(curl -sf https://location.services.mozilla.com/v1/geolocate?key=geoclue)
+    if [ -n "$location" ]; then
+        location_lat="$(echo "$location" | jq '.location.lat')"
+        location_lon="$(echo "$location" | jq '.location.lng')"
+    fi;
+else
+    location_lat="$OW_LAT"
+    location_lon="$OW_LON"
 fi;
 
 weather=$(curl -sf "$API/weather?appid=$OW_KEY&lat=$location_lat&lon=$location_lon&units=$UNITS")
