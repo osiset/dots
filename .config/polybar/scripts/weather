@@ -48,7 +48,8 @@ if [ -n "$weather" ]; then
     if [ "$1" == "open" ]; then
         xdg-open "https://openweathermap.org/city/$weather_city_id" >/dev/null 2>&1
     else
-        echo "$(get_icon "$weather_icon")" "$weather_temp$SYMBOL"
+        icon=$(get_icon "$weather_icon")
+        echo -e "%{F#9b7a45}$icon%{F-}" "$weather_temp""$SYMBOL"
     fi;
 fi
 

@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-bar_icon=""
 status="Off"
 bt_cmd=$(hciconfig -a | wc -l)
 
@@ -7,4 +6,4 @@ if [[ $bt_cmd > 0 ]]; then
     status="On"
 fi;
 
-echo "$bar_icon $status"
+echo "$status"
