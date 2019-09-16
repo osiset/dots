@@ -8,7 +8,7 @@ set $ctl Control
 set $wk1 "web"
 set $wk2 "code"
 set $wk3 "mail"
-set $wk4 "misc"
+set $wk4 "comm"
 set $wk5 "void"
 
 ###############
@@ -186,8 +186,9 @@ bindsym $ctl+$alt+Prior exec playerctl previous
 # Assignments
 ###############
 assign [class="Firefox"] $wk1
+assign [class="Chrome"] $wk1
 assign [class="Code"] $wk2
-assign [class="Slack"] $wk1
+assign [class="Slack"] $wk4
 assign [class="Thunderbird"] $wk3
 
 ###############
