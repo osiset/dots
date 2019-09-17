@@ -1,6 +1,9 @@
 !! URXVT
 ! fonts
-URxvt.font: xft:Hack:pixelsize=13
+URxvt.font:            xft:Hack:pixelsize=13,\
+                       xft:DejaVu Sans Mono:pixelsize:13,\
+                       xft:Unifont:pixelsize:16,\
+                       -*-unifont-*-*-*-*-*-*-*-*-*-*-*-*
 URxvt.boldfont: xft:Hack:pixelsize=13
 
 ! Disable scrollbars

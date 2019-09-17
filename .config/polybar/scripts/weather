@@ -49,7 +49,8 @@ if [ -n "$weather" ]; then
         xdg-open "https://openweathermap.org/city/$weather_city_id" >/dev/null 2>&1
     else
         icon=$(get_icon "$weather_icon")
-        echo -e "%{F#9b7a45}$icon%{F-}" "$weather_temp""$SYMBOL"
+        # Crackspot - #fffa50
+        echo -e "%{F#9b7a42}$icon%{F-}" "$weather_temp""$SYMBOL"
     fi;
 fi
 

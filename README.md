@@ -13,9 +13,9 @@
 + Greeter: LightDM
 + Clipboard: Clipit
 + Shell: ZSH (Oh-My-ZSH)
-+ Terminal: URXVT
++ Terminal: XFCE Terminal
 + Fonts: Hack (Terminal), Ubuntu (Interface)
-+ Colors: Scorched & Crackpot (from Rainglow.io)
++ Colors: Scorched & Crackpot (from Rainglow.io), MidnightCity
 
 ## Screenshots
 
@@ -26,6 +26,10 @@
 ### Crackpot
 
 ![Neofetch](/screenshot2.png?raw=true)
+
+### Midnight City
+
+![Neofetch](/screenshot3.png?raw=true)
 
 ## Resources
 
@@ -41,9 +45,11 @@ Firefox themes for both colorsets are located in `firefox/`. These colors we're 
 
 Contains some helpful scripts.
 
++ *switch-desktop-theme*: Switches the entire desktop theme for Xresources, Polybar, and i3; Looks in `.xres/themes/` for themes to use.
 + *audio-switch*: Uses Rofi to allow you to swap which PulseAudio sink is the main.
 + *buku-local-copy*: A script to export Buku (bookmark database) to an HTML file at a location.
 + *diff-so-fancy*: More readable diffs with Git.
 + *ospaste*: A script to paste images, files, or direct inputs over to OpenSUSE's paste service through command line.
 + *zypperdiff*: Shows changelogs for all packages updated.
++ *xfce-terminal-colors*: Generates a terminal scheme based on Xresource colors.
 

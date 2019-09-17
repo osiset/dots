@@ -1,0 +1,58 @@
+!! Colors (Midnight City)
+! defines
+#define FOREGROUND #b3b3b3
+#define BACKGROUND #0d011e
+#define COLOR0 #bdf3ff
+#define COLOR8 #bdf3ff
+#define COLOR1 #fd947c
+#define COLOR9 #fd947c
+#define COLOR2 #2bdcff
+#define COLOR10 #2bdcff
+#define COLOR3 #fffa50
+#define COLOR11 #fffa50
+#define COLOR4 #bd93f9
+#define COLOR12 #bd93f9
+#define COLOR5 #50fa7b
+#define COLOR13 #50fa7b
+#define COLOR6 #fd1d53
+#define COLOR14 #fd1d53
+#define COLOR7 #707880
+#define COLOR15 #707880
+
+! special
+*.foreground:   FOREGROUND
+*.background:   BACKGROUND
+*.cursorColor:  FOREGROUND
+
+! black
+*.color0:       COLOR0
+*.color8:       COLOR8
+
+! red
+*.color1:       COLOR1
+*.color9:       COLOR9
+
+! green
+*.color2:       COLOR2
+*.color10:      COLOR10
+
+! yellow
+*.color3:       COLOR3
+*.color11:      COLOR11
+
+! blue
+*.color4:       COLOR4
+*.color12:      COLOR12
+
+! magenta
+*.color5:       COLOR5
+*.color13:      COLOR13
+
+! cyan
+*.color6:       COLOR6
+*.color14:      COLOR14
+
+! white
+*.color7:       COLOR7
+*.color15:      COLOR15
+

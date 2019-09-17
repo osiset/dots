@@ -154,7 +154,9 @@
 [frame]
     width = 3
     # Scorched - color = "#bd4549"
+    # Crackpot
     color = "#526086"
+    # Midnight - color = "#FD947C"
 
 [shortcuts]
     # Shortcuts are specified as [modifier+][modifier+]...key
@@ -179,17 +181,26 @@
 [urgency_low]
     # Scorched - background = "#160d0e"
     # Scorched - foreground = "#baa0a2"
+    # Crackpot
     background = "#292740"
+    # Crackspot
     foreground = "#b3b3b3"
+    # Midnight City - background = "#0d011e"
+    # Midnight City - foreground = "#b3b3b3"
+
     timeout = 10
 
 [urgency_normal]
+    # Crackpot
     background = "#292740"
+    # Crackspot
     foreground = "#b3b3b3"
     timeout = 10
 
 [urgency_critical]
+    # Crackpot
     background = "#292740"
+    # Crackspot
     foreground = "#b3b3b3"
     timeout = 0
 

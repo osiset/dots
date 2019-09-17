@@ -78,7 +78,7 @@ exec --no-startup-id clipit --no-icon --daemon
 # App bindings
 ###############
 # Terminal
-bindsym $super+Return exec urxvt
+bindsym $super+Return exec xfce4-terminal
 
 # Rofi for quick access (drun)
 bindsym $super+x exec rofi -show drun
@@ -106,6 +106,7 @@ bindsym Print exec flameshot full -c -p ~/Pictures/Screenshots
 
 # Screenshots (manual)
 bindsym $super+e exec flameshot gui -p ~/Pictures/Screenshots
+
 ###############
 # Keybinds
 ###############

@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# 1. Creates XFCE terminal colors
+# 2. Modifies source of theme for Xresources
+# 3. Reloads resources
+# 4. Restarts Polybar, i3
+
+# Theme select
+printf "Please select a theme:\n"
+select f in ~/.xres/themes/*; do
+    test -n "$f" && break;
+    echo ">> Invalid Selection";
+done
+
+basename=$(basename $f)
+echo "Using ${basename} theme..."
+
+# Custom script in ~/bin
+echo ">> Generating XFCE Terminal colors..."
+~/bin/xfce-terminal-colorize "$f"
+
+# Fix the theme
+echo ">> Setting theme in Xresources..."
+sed -i -E "s|themes/([a-z_-]+)|themes/${basename}|" .Xresources
+
+# Reload Xresources
+echo ">> Reloading Xresources..."
+xrdb -load ~/.Xresources
+
+# Restart i3
+echo ">> Restarting i3..."
+sleep 1
+i3-msg restart
+
+# Restart Polybar
+echo ">> Restarting Polybar..."
+sleep 1
+~/.config/polybar/launch
+
+# Restart Dunst (no way to auto switch colors yet)
+killall -q dunst && dunst -conf ~/.config/dunstrc &
+
