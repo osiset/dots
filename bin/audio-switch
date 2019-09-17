@@ -22,15 +22,18 @@ SINK_DESCRIPTIONS=$(pactl list sinks | grep "Description" | cut --complement -c 
 SINK_INPUTS=$(pactl list sink-inputs | grep "Sink Input #")
 
 # Get the descriptions from the sinks without the default sink to display to the user and have the user pick a sink
-SINK_DESCRIPTION=$(printf "$SINK_DESCRIPTIONS" | sed "${DEFAULT_INDEX}d" | rofi -dmenu -i -p "Select sink")
+SINK_DESCRIPTION=$(printf "$SINK_DESCRIPTIONS" | rofi -dmenu -i -p "Select sink")
 
 # Get the index for the answer that the user wrote
 DESCRIPTION_INDEX=$(printf "$SINK_DESCRIPTIONS" | grep -n "$SINK_DESCRIPTION" | sed 's/:.*//')
+DESCRIPTION_INDEX=$(expr $DESCRIPTION_INDEX - 1)
 
 # Set the default sink
+echo "Switching default..."
 pactl set-default-sink $DESCRIPTION_INDEX
 
 # Change all the ouputs for the programs that are using the default sink
+echo "Switching apps..."
 printf "$SINK_INPUTS\n" | while read -r SINK_INPUT
 do
 	# Get the index for the program
