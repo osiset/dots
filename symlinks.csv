@@ -21,4 +21,4 @@ source,destination
 ./.Xdefaults,~/.Xdefaults
 ./.Xresources,~/.Xresources
 ./.zshrc,~/.zshrc
-
+./.templates,~/.templates
