@@ -37,6 +37,14 @@ echo ">> Restarting Polybar..."
 sleep 1
 ~/.config/polybar/launch
 
-# Restart Dunst (no way to auto switch colors yet)
+# Reconfigure Dunst from template
+echo ">> Reconfiguring Dunst"
+background=$(xrdb -query | grep "^*background" -m 1 | cut -f 2)
+foreground=$(xrdb -query | grep "^*foreground" -m 1 | cut -f 2)
+color1=$(xrdb -query | grep "^*color1" -m 1 | cut -f 2)
+cat ~/.templates/dunstrc | awk -v bkg="__BACKGROUND__" -v bkgrep="$background" -v fg="__FOREGROUND__" -v fgrep="$foreground" -v c1="__COLOR1__" -v c1rep="$color1" '{gsub(bkg,bkgrep,$0); gsub(fg,fgrep,$0); gsub(c1,c1rep,$0); print $0}' > ~/.config/dunstrc
+
+# Restart Dunst
+echo ">> Restarting Dunst"
 killall -q dunst && dunst -conf ~/.config/dunstrc &
 
