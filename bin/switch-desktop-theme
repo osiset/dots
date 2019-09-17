@@ -3,7 +3,9 @@
 # 1. Creates XFCE terminal colors
 # 2. Modifies source of theme for Xresources
 # 3. Reloads resources
-# 4. Restarts Polybar, i3
+# 4. Restarts i3
+# 5. Restarts Polybar
+# 6. Makes a new Dunstrc file from template (since Dunstrc doesn't support X) and restarts Dunst
 
 # Theme select
 printf "Please select a theme:\n"
@@ -38,13 +40,15 @@ sleep 1
 ~/.config/polybar/launch
 
 # Reconfigure Dunst from template
-echo ">> Reconfiguring Dunst"
+echo ">> Reconfiguring Dunst..."
 background=$(xrdb -query | grep "^*background" -m 1 | cut -f 2)
 foreground=$(xrdb -query | grep "^*foreground" -m 1 | cut -f 2)
 color1=$(xrdb -query | grep "^*color1" -m 1 | cut -f 2)
 cat ~/.templates/dunstrc | awk -v bkg="__BACKGROUND__" -v bkgrep="$background" -v fg="__FOREGROUND__" -v fgrep="$foreground" -v c1="__COLOR1__" -v c1rep="$color1" '{gsub(bkg,bkgrep,$0); gsub(fg,fgrep,$0); gsub(c1,c1rep,$0); print $0}' > ~/.config/dunstrc
 
 # Restart Dunst
-echo ">> Restarting Dunst"
+echo ">> Restarting Dunst..."
 killall -q dunst && dunst -conf ~/.config/dunstrc &
+
+echo "Done! To finalize:\n\tOpen XFCE Terminal > Colors > Presets and select ${basename}"
 
