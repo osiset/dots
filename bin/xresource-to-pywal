@@ -28,5 +28,5 @@ do
 done
 
 # Create the file
-echo -e "${output//#/}" > "$output_path"
+echo -e "$output" > "$output_path"
 echo "Saved to $output_path"
