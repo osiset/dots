@@ -52,8 +52,8 @@ MAX_LOST_WORK_SECS_ON_BAT=60
 #   you should know what you're doing! You *must* disable your distribution's
 #   governor settings or conflicts will occur.
 # Default: <none>
-#CPU_SCALING_GOVERNOR_ON_AC=powersave
-#CPU_SCALING_GOVERNOR_ON_BAT=powersave
+CPU_SCALING_GOVERNOR_ON_AC=ondemand
+CPU_SCALING_GOVERNOR_ON_BAT=powersave
 
 # Set the min/max frequency available for the scaling governor.
 # Possible values depend on your CPU. For available frequencies see
@@ -156,7 +156,7 @@ DISK_APM_LEVEL_ON_BAT="128 128"
 # - Single queue schedulers are legacy now and were removed together with
 #   the old block layer in kernel 5.0
 # Default: keep
-#DISK_IOSCHED="mq-deadline mq-deadline"
+DISK_IOSCHED="mq-deadline mq-deadline"
 
 # AHCI link power management (ALPM) for disk devices:
 #   min_power, med_power_with_dipm(*), medium_power, max_performance.

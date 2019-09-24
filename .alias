@@ -36,3 +36,7 @@ alias i3conf='nano ~/.config/i3/config'
 
 # Quick edit Polybar config
 alias polybarconf='nano ~/.config/polybar/config.ini'
+
+# Cranks the batteries up above threshold (preparing for trip)
+alias crank_batteries='tlp fullcharge BAT0 && tlp fullcharge BAT1'
+

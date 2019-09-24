@@ -6,15 +6,6 @@
 # - Automatically switches all running input sinks when switching the default sink
 # Original: https://gist.github.com/pdonadeo/aaf5f3f164ef23c9db4ac8458137c2c8
 
-# Get the current default sink
-SINK_DEFAULT=$(pactl info | grep "Default Sink" | cut -d':' -f2 | xargs)
-
-# Get the audio sink names
-SINK_NAMES=$(pactl list sinks | grep "Name" | cut --complement -c 1-7)
-
-# Get the index of the default sink
-DEFAULT_INDEX=$(printf "$SINK_NAMES" | grep -n "$SINK_DEFAULT" | sed 's/:.*//')
-
 # Get the audio sink descriptions
 SINK_DESCRIPTIONS=$(pactl list sinks | grep "Description" | cut --complement -c 1-13)
 
@@ -22,22 +13,22 @@ SINK_DESCRIPTIONS=$(pactl list sinks | grep "Description" | cut --complement -c 
 SINK_INPUTS=$(pactl list sink-inputs | grep "Sink Input #")
 
 # Get the descriptions from the sinks without the default sink to display to the user and have the user pick a sink
-SINK_DESCRIPTION=$(printf "$SINK_DESCRIPTIONS" | rofi -dmenu -i -p "Select sink")
+SINK_DESCRIPTION=$(printf "%s" "$SINK_DESCRIPTIONS" | rofi -dmenu -i -p "Select sink")
 
 # Get the index for the answer that the user wrote
-DESCRIPTION_INDEX=$(printf "$SINK_DESCRIPTIONS" | grep -n "$SINK_DESCRIPTION" | sed 's/:.*//')
+DESCRIPTION_INDEX=$(printf "%s" "$SINK_DESCRIPTIONS" | grep -n "$SINK_DESCRIPTION" | sed 's/:.*//')
 DESCRIPTION_INDEX=$(expr $DESCRIPTION_INDEX - 1)
 
 # Set the default sink
 echo "Switching default..."
-pactl set-default-sink $DESCRIPTION_INDEX
+pactl set-default-sink "$DESCRIPTION_INDEX"
 
 # Change all the ouputs for the programs that are using the default sink
 echo "Switching apps..."
-printf "$SINK_INPUTS\n" | while read -r SINK_INPUT
+printf "%s\n" "$SINK_INPUTS" | while read -r SINK_INPUT
 do
 	# Get the index for the program
-	SINK_INPUT_INDEX=$(printf "$SINK_INPUT" | cut -d'#' -f2)
-	pactl move-sink-input $SINK_INPUT_INDEX $DESCRIPTION_INDEX
+	SINK_INPUT_INDEX=$(printf "%s" "$SINK_INPUT" | cut -d'#' -f2)
+	pactl move-sink-input "$SINK_INPUT_INDEX" "$DESCRIPTION_INDEX"
 done
 

@@ -244,11 +244,14 @@ for_window [title="win7"] floating enable, border none
 #for_window [class="krunner"] floating enable, border none
 #for_window [class="Kmix"] floating enable, border none
 #for_window [class="Klipper"] floating enable, border none
-for_window [class="qlipper"] floating enable, border none
+#for_window [class="qlipper"] floating enable, border none
+for_window [class="clipit"] floating enable
+for_window [class="Slack" floating] move container to workspace current
 #for_window [class="Plasmoidviewer"] floating enable, border none
 #for_window [class="kcmshell5"] resize set 800px 500px
 for_window [class="Pavucontrol"] resize set 800px 500px
 for_window [class="Galculator"] floating enable
+for_window [class="Slack" floating] move container to workspace current, sticky enable
 
 # Don’t let notifications and non-interactive pop-up windows steal focus
 #no_focus [class="plasmashell" window_type="notification"]

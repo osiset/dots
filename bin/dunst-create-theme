@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# Creates a new Dunst file from a template, filling in color values from Xresources
+# Usage: `dunst-create-theme`
+
+# Input/output
+template_path=~/.templates/dunstrc
+output_path=~/.config/dunstrc
+
+# Get the background, foreground, and color1 value from Xresources
+background=$(xrdb -query | grep "^*background" -m 1 | cut -f 2)
+foreground=$(xrdb -query | grep "^*foreground" -m 1 | cut -f 2)
+color1=$(xrdb -query | grep "^*color1" -m 1 | cut -f 2)
+
+# Get the Dunst template, replace the values with awk
+cat < $template_path | awk -v bkg="__BACKGROUND__" -v bkgrep="$background" -v fg="__FOREGROUND__" -v fgrep="$foreground" -v c1="__COLOR1__" -v c1rep="$color1" '{gsub(bkg,bkgrep,$0); gsub(fg,fgrep,$0); gsub(c1,c1rep,$0); print $0}' > "$output_path"

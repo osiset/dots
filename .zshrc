@@ -1,3 +1,6 @@
+# Editor
+EDITOR=nano
+
 # PATH setup
 export ANDROID_HOME="$HOME/Android/Sdk"
 export ANDROID_HOME="$HOME/Android/Sdk"

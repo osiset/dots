@@ -1,11 +1,17 @@
 #!/bin/bash
 
+# Combines a few actions and scripts to switch the desktop theme.
+# Currently ignores any errors for now...
+# Usage: `switch-desktop-theme`
+#
+# What it does in total:
 # 1. Creates XFCE terminal colors
 # 2. Modifies source of theme for Xresources
 # 3. Reloads resources
 # 4. Restarts i3
 # 5. Restarts Polybar
 # 6. Makes a new Dunstrc file from template (since Dunstrc doesn't support X) and restarts Dunst
+# 7. Creates a PyWal-compatible file from Xresource colors
 
 # Theme select
 printf "Please select a theme:\n"
@@ -14,41 +20,37 @@ select f in ~/.xres/themes/*; do
     echo ">> Invalid Selection";
 done
 
-basename=$(basename $f)
+# Get the basename for the theme
+basename=$(basename "$f")
 echo "Using ${basename} theme..."
 
 # Custom script in ~/bin
-echo ">> Generating XFCE Terminal colors..."
-~/bin/xfce-terminal-colorize "$f"
+echo ">> Generating XFCE Terminal theme..."
+~/bin/xfce-terminal-create-theme "$f" >/dev/null 2>&1
 
-# Fix the theme
+# Fix the theme Xresources is pointing to
 echo ">> Setting theme in Xresources..."
-sed -i -E "s|themes/([a-z_-]+)|themes/${basename}|" .Xresources
+sed -i -E "s|themes/([a-z_-]+)|themes/${basename}|" .Xresources >/dev/null 2>&1
 
 # Reload Xresources
 echo ">> Reloading Xresources..."
-xrdb -load ~/.Xresources
+xrdb -load ~/.Xresources >/dev/null 2>&1
 
 # Restart i3
 echo ">> Restarting i3..."
-sleep 1
-i3-msg restart
+i3-msg restart >/dev/null 2>&1
 
 # Restart Polybar
+sleep 2
 echo ">> Restarting Polybar..."
-sleep 1
-~/.config/polybar/launch
+~/.config/polybar/launch >/dev/null 2>&1
 
-# Reconfigure Dunst from template
-echo ">> Reconfiguring Dunst..."
-background=$(xrdb -query | grep "^*background" -m 1 | cut -f 2)
-foreground=$(xrdb -query | grep "^*foreground" -m 1 | cut -f 2)
-color1=$(xrdb -query | grep "^*color1" -m 1 | cut -f 2)
-cat ~/.templates/dunstrc | awk -v bkg="__BACKGROUND__" -v bkgrep="$background" -v fg="__FOREGROUND__" -v fgrep="$foreground" -v c1="__COLOR1__" -v c1rep="$color1" '{gsub(bkg,bkgrep,$0); gsub(fg,fgrep,$0); gsub(c1,c1rep,$0); print $0}' > ~/.config/dunstrc
-
-# Restart Dunst
-echo ">> Restarting Dunst..."
+# Custom script in ~/bin
+echo ">> Reconfiguring and restarting Dunst..."
+~/bin/dunst-create-theme >/dev/null 2>&1
 killall -q dunst && dunst -conf ~/.config/dunstrc &
 
-echo "Done! To finalize:\n\tOpen XFCE Terminal > Colors > Presets and select ${basename}"
+# Custom script in ~/bin
+~/bin/xresource-to-pywal >/dev/null 2>&1
 
+echo -e "Done! To finalize:\n\tOpen XFCE Terminal > Colors > Presets and select \"scheme-${basename}\""

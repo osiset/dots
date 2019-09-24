@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Grab Xresource and converts it to PyWal color format.
+# Used for VSCode extension "Wal Theme" to dynamically generate a theme based on PyWal colors.
+#
+# Usage: `xresource-to-pywal`
+
+# Get the color value from Xreources
+get_color() {
+  xrdb -query | grep "^*$1" -m 1 | cut -f 2
+}
+
+# Setup
+output=""
+output_path=~/.cache/wal/colors
+
+# Get background and foreground
+background=$(get_color "background")
+output+="$background\n"
+foreground=$(get_color "foreground")
+output+="$foreground\n"
+
+# Loop colors 1 to 15
+for i in {1..15}
+do
+  color=$(get_color "color$i")
+  output+="$color\n"
+done
+
+# Create the file
+echo -e "${output//#/}" > "$output_path"
+echo "Saved to $output_path"
