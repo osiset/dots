@@ -45,11 +45,17 @@ Contains some helpful scripts.
 
 ### Theme Generation
 
+I have several scripts which neatly switches the whole desktop theme.
+
+Following `Base`, `VSCode`, and `GTK` below will produce a consistent desktop theme experience.
+
+#### Base
+
 Themes are generated with a combination of custom scripts and external scripts.
 
 Running `bin/desktop-theme create (new_theme_name) (wallpaper_path)` will do the following:
 
-1. Fire PyWal off to *only* set the colors in `.cache/wal/`.
+1. Runs PyWal to *only* set the colors in `.cache/wal/`.
 2. Converts the PyWal JSON to an Xresource theme and places it into `.xres/themes/`.
 3. Uses templates in `.templates/` to produce a new Dunst theme based on the new colors.
 4. Restarts Polybar and i3 so those colors may be refelected.
@@ -58,6 +64,10 @@ Running `bin/desktop-theme create (new_theme_name) (wallpaper_path)` will do the
 7. Outputs next steps (how to set Firefox colors, etc).
 8. Outputs string to use in Slack for slack colors.
 
-As a bonus, `wal-theme` VSCode extension watches `.cache/wal/colors` and automatically updates the VSCode theme to match.
+#### VSCode
 
-More-or-less the entire desktop will match in colors minus GTK/QT as they need their own themes.
+`wal-theme` is a VSCode extension which watches `.cache/wal/colors` and automatically updates the VSCode theme to match.
+
+#### GTK
+
+Clone [gtk-colorizer](https://github.com/ohmybrew/gtk-colorizer), then run `colorize`. This will read Xresource colors and create a GTK theme to match automatically.
