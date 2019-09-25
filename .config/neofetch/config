@@ -1,0 +1,22 @@
+print_info () {
+    info title
+    info underline
+
+
+    info "Host" model
+    info "OS" distro
+    info "Kernel" kernel
+    info "Uptime" uptime
+    info "Packages" packages
+    info "Shell" shell
+    info "DE" de
+    info "WM" wm
+    prin "Theme" "$(cat ~/.Xresources | grep -E -o 'themes/([a-z0-9_-]+)' | cut -d'/' -f2)" 
+    info "Terminal" term
+    info "Terminal Font" term_font
+    info "CPU" cpu
+    info "GPU" gpu
+    info "Memory" memory
+
+    info cols
+}

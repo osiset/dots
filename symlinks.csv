@@ -9,6 +9,7 @@ source,destination
 ./.config/powermanagementprofilesrc,~/.config/powermanagementprofilesrc
 ./.config/susepaste,~/.config/susepaste
 ./.config/tlp,/etc/default/tlp
+./.config/neofetch,~/.config/neofetch
 ./bin,~/bin
 ./.xres,~/.xres
 ./.alias,~/.alias
