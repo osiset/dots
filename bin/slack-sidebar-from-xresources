@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# Creates sidebar colors for Slack based on Xresources.
+# Usage: `slack-sidebar-from-xresources`
+
+color0=$(xrdb -query | grep "^*color0" -m 1 | cut -f 2)
+color1=$(xrdb -query | grep "^*color1" -m 1 | cut -f 2)
+color2=$(xrdb -query | grep "^*color2" -m 1 | cut -f 2)
+color3=$(xrdb -query | grep "^*color3" -m 1 | cut -f 2)
+color7=$(xrdb -query | grep "^*color7" -m 1 | cut -f 2)
+
+echo "$color0,$color3,$color1,$color7,$color3,$color7,$color2,$color1"

@@ -56,7 +56,7 @@ echo ">> Reconfiguring and restarting Dunst..."
 ~/bin/dunst-create-theme >/dev/null 2>&1
 killall -q dunst && dunst -conf ~/.config/dunstrc &
 
-# Custom script in ~/bin
-~/bin/xresource-to-pywal >/dev/null 2>&1
+# Custom scipt in ~/bin, get the slack colors
+slack=$(~/bin/slack-sidebar-from-xresources)
 
-echo -e "Done! To finalize:\n\tOpen XFCE Terminal > Colors > Presets and select \"scheme-${basename}\""
+echo -e "Done! To finalize:\n\tOpen XFCE Terminal > Colors > Presets and select \"scheme-${basename}\"\n\tSlack Colors:${slack}\n\tFirefox: Use Firefox colors"

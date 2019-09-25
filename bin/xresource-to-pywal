@@ -13,6 +13,7 @@ get_color() {
 # Setup
 output=""
 output_path=~/.cache/wal/colors
+output_path_tmp=~/.cache/wal/colors.tmp
 
 # Get background and foreground
 background=$(get_color "background")
@@ -28,6 +29,7 @@ do
 done
 
 # Create the file
-echo -e "$output" > "$output_path"
-#touch "$output_path"
+echo -e "$output" > "$output_path_tmp"
+rm "$output_path"
+mv "$output_path_tmp" "$output_path"
 echo "Saved to $output_path"

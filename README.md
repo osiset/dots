@@ -14,8 +14,6 @@
 + Clipboard: Clipit
 + Shell: ZSH (Oh-My-ZSH)
 + Terminal: XFCE Terminal
-+ Fonts: Hack (Terminal), Ubuntu (Interface)
-+ Colors: Scorched & Crackpot (from Rainglow.io), MidnightCity
 
 ## Screenshots
 
@@ -44,12 +42,3 @@ Firefox themes for both colorsets are located in `firefox/`. These colors we're 
 ### Bin
 
 Contains some helpful scripts.
-
-+ *desktop-theme*: Combines `switch-desktop-theme`, `colterm`, `xfce-terminal-create-theme`, and others into a easy-to-use script to grab colors, or create a desktop theme, or switch the desktop theme.
-+ *switch-desktop-theme*: Switches the entire desktop theme for Xresources, Polybar, and i3.
-+ *colterm*: Fork of ColTerm in my repo specific to my desktop setup for creating Xresource color themes.
-+ *dunst-create-theme*: Creates a Dunst theme from Xresource colors.
-+ *audio-switch*: Uses Rofi to allow you to swap which PulseAudio sink is the main.
-+ *buku-local-copy*: A script to export Buku (bookmark database) to an HTML file at a location.
-+ *ospaste*: A script to paste images, files, or direct inputs over to OpenSUSE's paste service through command line.
-+ *xfce-terminal-create-theme*: Generates a terminal scheme based on Xresource colors.

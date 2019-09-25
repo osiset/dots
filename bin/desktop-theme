@@ -3,11 +3,6 @@
 # Combine several scripts into a single easy-to-use script.
 # Centered around creating/modifying the desktop theme.
 
-# Gets colors of a file or URL
-colors() {
-    ~/bin/colterm -po="$3" -f="$1" -sn="$2"
-}
-
 # Switch desktop theme
 switch() {
     ~/bin/switch-desktop-theme "$1"
@@ -25,21 +20,13 @@ create() {
         exit 1;
     fi
 
-    # Do a "dry" run
-    colors "$file" "$theme_name" true
+    # Have PyWal make the colors
+    wal -n -s -t -e -q -i "$file"
 
-    # Ask if it is OK
-    echo
-    read -p "Are the colors OK? (y/n): " -n 1 -r
-    if [[ $REPLY =~ ^[Yy]$ ]]; then
-        # Really run it
-        colors "$file" "$theme_name" false
-    else
-        # Colors are not good, cancel
-        echo -e "\n>> Cancelled"
-        exit 1;
-    fi
+    # Convert to an Xresource theme
+    ~/bin/pywal-to-xresources "$theme_name"
 
+    # Switch
     switch "$theme_name"
 }
 
@@ -47,9 +34,6 @@ action=$1
 if [ "$action" == "create" ]; then
     # Usage: `desktop-theme create (theme_name) (file_or_url_to_image)`
     create "$2" "$3"
-elif [ "$action" == "colors" ]; then
-    # Usage: `desktop-theme colors (file_or_url_to_image) (theme_name) (dry_run=true|false)`
-    colors "$2" "$3" "$4"
 elif [ "$action" == "switch" ]; then
     # Usage: `desktop-theme switch`
     switch

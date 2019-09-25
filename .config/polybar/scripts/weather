@@ -50,7 +50,7 @@ if [ -n "$weather" ]; then
     else
         icon=$(get_icon "$weather_icon")
         # Crackspot - #fffa50
-        echo -e "%{F#9b7a42}$icon%{F-}" "$weather_temp""$SYMBOL"
+        echo -e "$icon" "$weather_temp""$SYMBOL"
     fi;
 fi
 

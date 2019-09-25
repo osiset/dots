@@ -1,0 +1,76 @@
+#!/bin/bash
+
+# Converts PyWal JSON to Xresources file.
+# Usage: `pwal-to-xresources (theme_name)`
+
+if [ -z "$1" ]; then
+  echo ">> Error: Theme name required"
+fi
+
+wal_path=~/.cache/wal/colors.json
+
+background=$(jq ".special .background" "$wal_path" | tr -d '"')
+foreground=$(jq ".special .foreground" "$wal_path" | tr -d '"')
+cursor=$(jq ".special .cursor" "$wal_path" | tr -d '"')
+color0=$(jq ".colors .color0" "$wal_path" | tr -d '"')
+color1=$(jq ".colors .color1" "$wal_path" | tr -d '"')
+color2=$(jq ".colors .color2" "$wal_path" | tr -d '"')
+color3=$(jq ".colors .color3" "$wal_path" | tr -d '"')
+color4=$(jq ".colors .color4" "$wal_path" | tr -d '"')
+color5=$(jq ".colors .color5" "$wal_path" | tr -d '"')
+color6=$(jq ".colors .color6" "$wal_path" | tr -d '"')
+color7=$(jq ".colors .color7" "$wal_path" | tr -d '"')
+color8=$(jq ".colors .color8" "$wal_path" | tr -d '"')
+color9=$(jq ".colors .color9" "$wal_path" | tr -d '"')
+color10=$(jq ".colors .color10" "$wal_path" | tr -d '"')
+color11=$(jq ".colors .color11" "$wal_path" | tr -d '"')
+color12=$(jq ".colors .color12" "$wal_path" | tr -d '"')
+color13=$(jq ".colors .color13" "$wal_path" | tr -d '"')
+color14=$(jq ".colors .color14" "$wal_path" | tr -d '"')
+color15=$(jq ".colors .color15" "$wal_path" | tr -d '"')
+
+# Make the template
+output="!! Colors ($1)\n!defines"
+output+="\n#define FOREGROUND $foreground"
+output+="\n#define BACKGROUND $background"
+output+="\n#define CURSOR $cursor"
+output+="\n#define COLOR0 $color0"
+output+="\n#define COLOR1 $color1"
+output+="\n#define COLOR2 $color2"
+output+="\n#define COLOR3 $color3"
+output+="\n#define COLOR4 $color4"
+output+="\n#define COLOR5 $color5"
+output+="\n#define COLOR6 $color6"
+output+="\n#define COLOR7 $color7"
+output+="\n#define COLOR8 $color8"
+output+="\n#define COLOR9 $color9"
+output+="\n#define COLOR10 $color10"
+output+="\n#define COLOR11 $color11"
+output+="\n#define COLOR12 $color12"
+output+="\n#define COLOR13 $color13"
+output+="\n#define COLOR14 $color14"
+output+="\n#define COLOR15 $color15"
+output+="\n\n! special"
+output+="\n*background: BACKGROUND"
+output+="\n*foreground: FOREGROUND"
+output+="\n*cursor: CURSOR"
+output+="\n\n! colors"
+output+="\n*color0: COLOR0"
+output+="\n*color1: COLOR1"
+output+="\n*color2: COLOR2"
+output+="\n*color3: COLOR3"
+output+="\n*color4: COLOR4"
+output+="\n*color5: COLOR5"
+output+="\n*color6: COLOR6"
+output+="\n*color7: COLOR7"
+output+="\n*color8: COLOR8"
+output+="\n*color9: COLOR9"
+output+="\n*color10: COLOR10"
+output+="\n*color11: COLOR11"
+output+="\n*color12: COLOR12"
+output+="\n*color13: COLOR13"
+output+="\n*color14: COLOR14"
+output+="\n*color15: COLOR15"
+output+=""
+
+echo -e "$output" > ~/.xres/themes/"$1"
