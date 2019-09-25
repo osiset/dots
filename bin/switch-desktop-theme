@@ -23,7 +23,7 @@ if [ -z "$1" ]; then
     done
 else
     # Theme path passed in
-    f=$1
+    f="$HOME/.xres/themes/$1"
 fi
 
 # Get the basename for the theme
@@ -36,7 +36,7 @@ echo ">> Generating XFCE Terminal theme..."
 
 # Fix the theme Xresources is pointing to
 echo ">> Setting theme in Xresources..."
-sed -i -E "s|themes/([a-z_-]+)|themes/${basename}|" .Xresources >/dev/null 2>&1
+sed -i -E "s|themes/([a-z_-]+)|themes/${basename}|" ~/.Xresources >/dev/null 2>&1
 
 # Reload Xresources
 echo ">> Reloading Xresources..."
