@@ -29,5 +29,5 @@ done
 
 # Create the file
 echo -e "$output" > "$output_path"
-touch "$output_path"
+#touch "$output_path"
 echo "Saved to $output_path"

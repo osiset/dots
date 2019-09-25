@@ -74,6 +74,9 @@ exec --no-startup-id ~/.config/polybar/launch
 # Run Clipboard (ctl+alt+c)
 exec --no-startup-id clipit --no-icon --daemon
 
+# Workspace (Code) settings
+exec --no-startuo-id "i3-msg 'workspace code; append_layout ~/.config/i3/layouts/code.json'"
+
 ###############
 # App bindings
 ###############
