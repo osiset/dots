@@ -1,0 +1,57 @@
+#!/bin/bash
+
+# NOT WORKING 100% YET
+# Combine several scripts into a single easy-to-use script.
+# Centered around creating/modifying the desktop theme.
+
+# Gets colors of a file or URL
+colors() {
+    ~/bin/colterm -po="$2" -f="$1"
+}
+
+# Switch desktop theme
+switch() {
+    ~/bin/switch-desktop-theme "$1"
+}
+
+# Creates and switches entire theme at once
+create() {
+    # Setup
+    theme_name=$1
+    file=$2
+
+    # Ensure we have a theme name
+    if [ "$theme_name" == "" ]; then
+        echo ">> Error: Theme name required as first argument."
+        exit 1;
+    fi
+
+    # Do a "dry" run
+    colors "$file" true
+
+    # Ask if it is OK
+    echo
+    read -p "Are the colors OK? (y/n): " -n 1 -r
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        # Really run it
+        colors "$file" false
+    else
+        # Colors are not good, cancel
+        echo -e "\n>> Cancelled"
+        exit 1;
+    fi
+
+    switch "$theme_name"
+}
+
+action=$1
+if [ "$action" == "create" ]; then
+    # Usage: `desktop-theme create (theme_name) (file_or_url_to_image)`
+    create "$2" "$3"
+elif [ "$action" == "colors" ]; then
+    # Usage: `desktop-theme colors (file_or_url_to_image) (dry_run=true|false)`
+    colors "$2" "$3"
+elif [ "$action" == "switch" ]; then
+    # Usage: `desktop-theme switch`
+    switch
+fi

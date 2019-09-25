@@ -14,11 +14,17 @@
 # 7. Creates a PyWal-compatible file from Xresource colors
 
 # Theme select
-printf "Please select a theme:\n"
-select f in ~/.xres/themes/*; do
-    test -n "$f" && break;
-    echo ">> Invalid Selection";
-done
+if [ -z "$1" ]; then
+    # No theme passed in
+    printf "Please select a theme:\n"
+    select f in ~/.xres/themes/*; do
+        test -n "$f" && break;
+        echo ">> Invalid Selection";
+    done
+else
+    # Theme path passed in
+    f=$1
+fi
 
 # Get the basename for the theme
 basename=$(basename "$f")

@@ -45,11 +45,11 @@ Firefox themes for both colorsets are located in `firefox/`. These colors we're 
 
 Contains some helpful scripts.
 
-+ *switch-desktop-theme*: Switches the entire desktop theme for Xresources, Polybar, and i3; Looks in `.xres/themes/` for themes to use.
++ *desktop-theme*: Combines `switch-desktop-theme`, `colterm`, `xfce-terminal-create-theme`, and others into a easy-to-use script to grab colors, or create a desktop theme, or switch the desktop theme.
++ *switch-desktop-theme*: Switches the entire desktop theme for Xresources, Polybar, and i3.
++ *colterm*: Fork of ColTerm in my repo specific to my desktop setup for creating Xresource color themes.
++ *dunst-create-theme*: Creates a Dunst theme from Xresource colors.
 + *audio-switch*: Uses Rofi to allow you to swap which PulseAudio sink is the main.
 + *buku-local-copy*: A script to export Buku (bookmark database) to an HTML file at a location.
-+ *diff-so-fancy*: More readable diffs with Git.
 + *ospaste*: A script to paste images, files, or direct inputs over to OpenSUSE's paste service through command line.
-+ *zypperdiff*: Shows changelogs for all packages updated.
-+ *xfce-terminal-colors*: Generates a terminal scheme based on Xresource colors.
-
++ *xfce-terminal-create-theme*: Generates a terminal scheme based on Xresource colors.
