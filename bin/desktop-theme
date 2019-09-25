@@ -14,27 +14,26 @@ create() {
     theme_name=$1
     file=$2
 
-    # Ensure we have a theme name
-    if [ "$theme_name" == "" ]; then
-        echo ">> Error: Theme name required as first argument."
-        exit 1;
-    fi
-
     # Have PyWal make the colors
     wal -n -s -t -e -q -i "$file"
 
-    # Convert to an Xresource theme
+    # Convert PayWal JSON to an Xresource theme
     ~/bin/pywal-to-xresources "$theme_name"
 
     # Switch
     switch "$theme_name"
 }
 
-action=$1
-if [ "$action" == "create" ]; then
+# Ensure we have a theme name
+if [ "$2" == "" ]; then
+    echo ">> Error: Theme name required as first argument."
+    exit 1
+fi
+
+if [ "$1" == "create" ]; then
     # Usage: `desktop-theme create (theme_name) (file_or_url_to_image)`
     create "$2" "$3"
-elif [ "$action" == "switch" ]; then
+elif [ "$1" == "switch" ]; then
     # Usage: `desktop-theme switch`
-    switch
+    switch "$2"
 fi

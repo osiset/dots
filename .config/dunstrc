@@ -155,7 +155,7 @@
 
 [frame]
     width = 3
-    color = "#B45A43"
+    color = "#9A3057"
 
 [shortcuts]
     # Shortcuts are specified as [modifier+][modifier+]...key
@@ -178,18 +178,18 @@
     context = ctrl+shift+period
 
 [urgency_low]
-    background = "#0d101e"
-    foreground = "#f2ebe2"
+    background = "#0b0d1f"
+    foreground = "#8acfdd"
     timeout = 10
 
 [urgency_normal]
-    background = "#0d101e"
-    foreground = "#f2ebe2"
+    background = "#0b0d1f"
+    foreground = "#8acfdd"
     timeout = 10
 
 [urgency_critical]
-    background = "#0d101e"
-    foreground = "#f2ebe2"
+    background = "#0b0d1f"
+    foreground = "#8acfdd"
     timeout = 0
 
 [spotify]

@@ -59,4 +59,10 @@ killall -q dunst && dunst -conf ~/.config/dunstrc &
 # Custom scipt in ~/bin, get the slack colors
 slack=$(~/bin/slack-sidebar-from-xresources)
 
-echo -e "Done! To finalize:\n\tOpen XFCE Terminal > Colors > Presets and select \"scheme-${basename}\"\n\tSlack Colors:${slack}\n\tFirefox: Use Firefox colors"
+# Show what was switched to
+cat "$f"
+
+echo -e "\nDone! To finalize:\n"
+echo -e "\t1) Open XFCE Terminal > Colors > Presets and select \"${basename}\"\n"
+echo -e "\t2) Open Slack > Settings > Theme and use these values: ${slack}\n"
+echo -e "\t3) Open Firefox > Color: Set the colors based on the values"
