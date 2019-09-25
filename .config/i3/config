@@ -92,8 +92,9 @@ bindsym $super+shift+x exec rofi -show window
 # Firefox for browsing
 bindsym $super+Shift+w exec firefox
 
-# Dolphin for files
-bindsym $super+Shift+f exec thunar
+# Files
+# bindsym $super+Shift+f exec thunar
+bindsym $super+Shift+f exec xfce4-terminal -e 'bash -c "ranger"'
 
 # VSCode for programming
 bindsym $super+Shift+c exec code
