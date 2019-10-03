@@ -63,6 +63,7 @@ slack=$(~/bin/slack-sidebar-from-xresources)
 cat "$f"
 
 echo -e "\nDone! To finalize:\n"
-echo -e "\t1) Open XFCE Terminal > Colors > Presets and select \"${basename}\"\n"
-echo -e "\t2) Open Slack > Settings > Theme and use these values: ${slack}\n"
+echo -e "\t1) Open XFCE Terminal > Colors > Presets and select \"${basename}\""
+echo -e "\t2) Open Slack > Settings > Theme and use these values: ${slack}"
 echo -e "\t3) Open Firefox > Color: Set the colors based on the values"
+echo -e "\t4) Use \"gtk-colorizer\" to make a GTK/XFWM theme"
