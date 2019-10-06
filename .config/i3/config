@@ -111,6 +111,9 @@ bindsym Print exec flameshot full -c -p ~/Pictures/Screenshots
 # Screenshots (manual)
 bindsym $super+e exec flameshot gui -p ~/Pictures/Screenshots
 
+# Restart Polybar
+bindsym $super+Shift+p exec ~/.config/polybar/launch
+
 ###############
 # Keybinds
 ###############
