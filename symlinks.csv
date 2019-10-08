@@ -10,6 +10,8 @@ source,destination
 ./.config/susepaste,~/.config/susepaste
 ./.config/tlp,/etc/default/tlp
 ./.config/neofetch,~/.config/neofetch
+./.config/dnf/dnf.conf,/etc/dnf/dnf.conf
+./.config/docker/daemon.json,/etc/docker/daemon.json
 ./bin,~/bin
 ./.xres,~/.xres
 ./.alias,~/.alias

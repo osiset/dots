@@ -81,6 +81,7 @@ ZSH_THEME="theunraveler"
 plugins=(git command-not-found colorize composer npm rvm suse)
 
 source $ZSH/oh-my-zsh.sh
+source $HOME/.alias
 
 # User configuration
 

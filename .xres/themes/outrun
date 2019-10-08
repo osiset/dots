@@ -1,0 +1,44 @@
+!! Colors (outrun)
+!defines
+#define FOREGROUND #8acfdd
+#define BACKGROUND #0b0d1f
+#define CURSOR #8acfdd
+#define COLOR0 #0b0d1f
+#define COLOR1 #9A3057
+#define COLOR2 #C63852
+#define COLOR3 #055786
+#define COLOR4 #076D98
+#define COLOR5 #4C5E93
+#define COLOR6 #08AACE
+#define COLOR7 #8acfdd
+#define COLOR8 #60909a
+#define COLOR9 #9A3057
+#define COLOR10 #C63852
+#define COLOR11 #055786
+#define COLOR12 #076D98
+#define COLOR13 #4C5E93
+#define COLOR14 #08AACE
+#define COLOR15 #8acfdd
+
+! special
+*background: BACKGROUND
+*foreground: FOREGROUND
+*cursor: CURSOR
+
+! colors
+*color0: COLOR0
+*color1: COLOR1
+*color2: COLOR2
+*color3: COLOR3
+*color4: COLOR4
+*color5: COLOR5
+*color6: COLOR6
+*color7: COLOR7
+*color8: COLOR8
+*color9: COLOR9
+*color10: COLOR10
+*color11: COLOR11
+*color12: COLOR12
+*color13: COLOR13
+*color14: COLOR14
+*color15: COLOR15

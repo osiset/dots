@@ -1,17 +1,21 @@
 #!/usr/bin/env bash
+
 while true; do
     if (ping -c 1 github.com || ping -c 1 bitbucket.org || ping -c 1 opensuse.org) &>/dev/null; then
-        updates=$(zypper lu | grep 'v ' | wc -l)
-        length=$(echo "$updates" | wc -c)
+        dnf=$(env LC_ALL=C sudo dnf upgrade --refresh --assumeno 2> /dev/null)
 
-	if [ "$length" -gt 4 ]; then
-		echo "Error"
-	else
-	        echo "$updates"
-	fi
-    else
-        echo "Error"
-    fi
+        upgrade=$(echo "$dnf" | grep '^Upgrade ' | awk '{ print $2 }')
+        install=$(echo "$dnf" | grep '^Install ' | awk '{ print $2 }')
+
+        updates=$(( upgrade + install ))
+
+        if [ "$updates" -gt 0 ]; then
+            echo "$updates"
+        else
+            echo "0"
+        fi
+    fi;
 
     sleep 3600
 done
+

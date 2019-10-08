@@ -50,7 +50,7 @@ font-2 = "xos4 Terminus:size=12;1"
 font-3 = "Weather Icons:size=10;2"
 
 ; Modules
-modules-left = date weather pipe cpu memory temperature pipe opsys
+modules-left = date weather pipe cpu memory temperature
 modules-center = i3
 modules-right = check-updates pipe battery-internal battery pipe bluetooth network pipe backlight pulseaudio notifications
 module-margin-left = 2

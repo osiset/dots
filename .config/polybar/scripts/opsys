@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+echo $(hostnamectl | grep 'Operating System:' | cut -d':' -f 2 | xargs)

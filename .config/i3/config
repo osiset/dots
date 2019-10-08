@@ -19,14 +19,6 @@ font pango: Ubuntu 10
 ###############
 # Colors
 ###############
-# Scorched - Rainglow
-#set_from_resource $cfg foreground #baa0a2
-#set_from_resource $cbg backgrounf #160d0e
-#set_from_resource $cred color6 #bd4549
-#set_from_resource $cyellow color4 #F6EA82
-#set_from_resource $cdullred color0 #44272a
-
-# Crackpot - Rainglow
 set_from_resource $cfg foreground #baa0a2
 set_from_resource $cbg backgrounf #160d0e
 set_from_resource $cred color1 #bd4549

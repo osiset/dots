@@ -5,3 +5,5 @@ Exec=flameshot
 Terminal=false
 Type=Application
 X-GNOME-Autostart-enabled=true
+Hidden=false
+

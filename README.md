@@ -17,6 +17,10 @@
 
 ## Screenshots
 
+### Outrun (example)
+
+![Neofetch](/screenshot3.png?raw=true)
+
 ### Scorched (example)
 
 ![Neofetch](/screenshot.png?raw=true)
@@ -24,10 +28,6 @@
 ### Crackpot (example)
 
 ![Neofetch](/screenshot2.png?raw=true)
-
-### Midnight City (example)
-
-![Neofetch](/screenshot3.png?raw=true)
 
 ## Resources
 

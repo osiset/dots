@@ -13,7 +13,7 @@
     # <http://developer.gnome.org/pango/stable/PangoMarkupFormat.html>.
     # If markup is not allowed, those tags will be stripped out of the
     # message.
-    allow_markup = yes
+    markup = yes
 
     # Treat incoming notifications as plain text
     plain_text = no
@@ -151,11 +151,11 @@
     icon_position = off
 
     # Paths to default icons.
-    icon_folders = /usr/share/icons/gnome/22x22/status/:/usr/share/icons/gnome/22x22/devices/:/usr/share/icons/hicolor/22x22/apps/
+    icon_paths = /usr/share/icons/gnome/22x22/status/:/usr/share/icons/gnome/22x22/devices/:/usr/share/icons/hicolor/22x22/apps/
 
-[frame]
-    width = 3
-    color = "__COLOR1__"
+    # Frame
+    frame_width = 3
+    frame_color = "__COLOR1__"
 
 [shortcuts]
     # Shortcuts are specified as [modifier+][modifier+]...key
