@@ -1,0 +1,6 @@
+[Unit]
+Description=undervolt
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/undervolt -v --core -120 --cache -120

@@ -40,3 +40,6 @@ alias polybarconf='nano ~/.config/polybar/config.ini'
 # Cranks the batteries up above threshold (preparing for trip)
 alias crank_batteries='tlp fullcharge BAT0 && tlp fullcharge BAT1'
 
+# Buku shortcut
+alias buku_server='xdg-open http://127.0.0.1:5001; bukuserver run --host 127.0.0.1 --port 5001'
+
