@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+status0=$(cat /sys/class/power_supply/BAT0/status)
+status1=$(cat /sys/class/power_supply/BAT1/status)
+
+if [ "$status0" = "Discharging" ] || [ "$status1" = "Discharging" ]; then
+    bat0=$(awk '{print $1*10^-6}' /sys/class/power_supply/BAT0/power_now)
+    bat1=$(awk '{print $1*10^-6}' /sys/class/power_supply/BAT1/power_now)
+    total=$(echo "$bat0 + $bat1" | bc)
+    echo "$total W"
+else
+    echo "0 W"
+fi
+
