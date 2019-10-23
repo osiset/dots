@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+
+# Reads symlink CSV (source, destination) to map dot files to parts of the filesystem
+# Usage: `create-symlinks (path to dots folder)`
+# Example: `create-symlinks ~/dots`
+
+prompt_confirm() {
+  while true; do
+    read -r -n 1 -p "${1:-Continue?} [y/n]: " reply </dev/tty
+    case $reply in
+      [yY]) echo 1; return 1 ;;
+      [nN]) echo 0; return 0 ;;
+      *) echo "Invalid input"
+    esac 
+  done  
+}
+
+dots="$1"
+row=0
+
+# Move to dots directory
+cd $dots || exit 1
+echo -e "Now in \"$dots\"\n"
+
+# Read the symlinks CSV
+while IFS=, read -r src dest
+do
+    # Skip first row
+    row=$((row+1))
+    if [ "$row" -eq "1" ]; then
+        continue
+    fi
+ 
+    # Check if sudo is needed for system locations
+    dest_target="${dest:0:1}"
+    sudo_needed=0
+    if [ "$dest_target" = "/" ]; then
+        sudo_needed=1
+    fi
+
+    # Fix dest "~" to full pathname
+    dest=${dest/\~/$HOME}
+
+    # Fix src "./" to full pathname
+    src=${src/./$dots}
+
+    # Confirm the action
+    reply=$(prompt_confirm "Link \"$src\" => \"$dest\"")
+    echo ""
+    if [ "$reply" -eq "1" ]; then
+        if [ "$sudo_needed" -eq "1" ]; then
+            sudo rm "$dest" 2>/dev/null
+            sudo ln -s "$src" "$dest"
+        else
+            rm -r "$dest"
+            ln -s "$src" "$dest"
+        fi
+
+        echo -e ">> Completed"
+    else
+        echo -e ">> Skipped"
+    fi
+done < "./symlinks.csv"
+

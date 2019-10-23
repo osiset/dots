@@ -7,7 +7,6 @@ source,destination
 ./.config/dunstrc,~/.config/dunstrc
 ./.config/gtkrc,~/.config/gtkrc
 ./.config/powermanagementprofilesrc,~/.config/powermanagementprofilesrc
-./.config/susepaste,~/.config/susepaste
 ./.config/neofetch,~/.config/neofetch
 ./.config/dnf/dnf.conf,/etc/dnf/dnf.conf
 ./.config/docker/daemon.json,/etc/docker/daemon.json

@@ -29,7 +29,7 @@ alias mv='mv -i'
 alias dev='cd ~/Development'
 alias devlr='cd ~/Development/Li*'
 alias devgh='cd ~/Development/Github/'
-alias dots='cd ~/Documents/dots'
+alias dots='cd ~/dots'
 
 # Quick edit i3 config
 alias i3conf='nano ~/.config/i3/config'
