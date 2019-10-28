@@ -3,7 +3,7 @@ source,destination
 ./.config/autostart,~/.config/autostart
 ./.config/i3,~/.config/i3
 ./.config/polybar,~/.config/polybar
-./.config/compoton.conf,~/.config/compton.conf
+./.config/compton.conf,~/.config/compton.conf
 ./.config/dunstrc,~/.config/dunstrc
 ./.config/gtkrc,~/.config/gtkrc
 ./.config/powermanagementprofilesrc,~/.config/powermanagementprofilesrc

@@ -1,0 +1,94 @@
+#!/usr/bin/env python3
+
+# Converts NextCloud Bookmarks into PDFs for offline page caching.
+# Required `python` with `requests`, `google-chrome`, and `gs`.
+# Usage: `nc-bookmarks-to-pdf (path to save PDFs)`
+# Exapmle: `nc-bookmarks-to-pdf ~/Documents/Bookmarks/Archive`
+
+import json
+import requests
+import os
+from hashlib import md5
+from subprocess import call, PIPE
+from sys import argv
+
+def webpage_to_pdf(url, output_name):
+    call(
+        'google-chrome --headless --disable-gpu --window-size="1280,1696" --print-to-pdf="%s" %s' % (output_name, url),
+        shell=True,
+        stdout=PIPE,
+        stderr=PIPE
+    )
+
+def compress_pdf(output_name):
+    fixed_output_name = output_name.replace('_tmp', '')
+
+    call(
+        'gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dDownsampleColorImages=true -dColorImageResolution=150 -dNOPAUSE  -dBATCH -sOutputFile=%s %s' % (fixed_output_name, output_name),
+        shell=True,
+        stdout=PIPE,
+        stderr=PIPE
+    )
+
+def cleanup(dir):
+    files = os.listdir(dir)
+    for file in files:
+        if file.endswith('_tmp.pdf'):
+            os.remove(os.path.join(dir, file))
+
+def get_bookmarks():
+    nc_username = os.environ.get('NEXTCLOUD_USERNAME')
+    nc_password = os.environ.get('NEXTCLOUD_PASSWORD')
+    nc_domain = os.environ.get('NEXTCLOUD_DOMAIN')
+
+    req = requests.get(
+        'https://%s/index.php/apps/bookmarks/public/rest/v2/bookmark?page=-1' % nc_domain,
+        auth=(nc_username, nc_password)
+    )
+    bookmarks = json.loads(req.content)['data']
+
+    return bookmarks
+
+def webpage_exists(url):
+    try:
+        response = requests.head(url)
+    except requests.ConnectionError:
+        return False
+    else:
+        if response.status_code > 399:
+            return False
+
+    return True
+
+def main(save_path):
+    print('Getting bookmarks from NextCloud...')
+    bookmarks = get_bookmarks()
+    print('%d bookmarks found' % len(bookmarks))
+    print('')
+
+    for row in bookmarks:
+        title = row['title']
+        url = row['url']
+        output = '%s/%s_tmp.pdf' % (save_path, md5(title.encode('utf-8')).hexdigest())
+
+        if os.path.exists(output):
+            continue
+
+        print('')
+        print('>> Processing "%s"...' % title)
+        if webpage_exists(url) is False:
+            print('>> Status error')
+            continue
+
+        webpage_to_pdf(url, output)
+        print('>> Compressing...')
+        compress_pdf(output)
+        print('>> Done!')
+
+    cleanup(save_path)
+    print('')
+    print('Completed!')
+        
+if __name__ == '__main__':
+    main(argv[1])
+

@@ -10,3 +10,6 @@
 !! Rofi
 #include "/home/tyler/.xres/rofi"
 
+!! Xscreensaver
+#include "/home/tyler/.xres/xscreensaver"
+
