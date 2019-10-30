@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+# Encrypts and decrypts a file using Blowfish option.
+# A password will be asked for on encrypt and decrypt.
+# Usage (encrypt): `./enc-dec-file enc (input file)`
+# Usage (decript): `./enc-dec-file dec (input file)`
+
+method=$1
+input=$2
+
+base_input=$(basename "$input")
+cmd="openssl bf -e -pbkdf2"
+
+if [ "$method" = "enc" ]; then
+  output="${PWD}/$(basename "$input").bf"
+  echo -e "Encrypting file: \"$base_input\" to \"$(basename "$output")\"...\n"
+  $cmd < "$input" > "$output"
+  echo -e "\n>> Remember the key to decrypt."
+else
+  output="${input/.bf/}"
+  echo -e "Decrypting file: \"$base_input\" to \"$(basename "$output")\"...\n"
+  $cmd -d < "$input" > "$output"
+fi
+
+echo -e "\n>> Done!"

@@ -1,7 +1,7 @@
 # Generated from template in ~/.templates
 
 [global]
-    font = Ubuntu 10
+    font = Ubuntu Mono 10
 
     # Allow a small subset of html markup in notifications and formats:
     #   <b>bold</b>

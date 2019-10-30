@@ -46,5 +46,5 @@ rofi.color-window: BACKGROUND, COLOR1, COLOR3
 rofi.color-normal: BACKGROUND, FOREGROUND, BACKGROUND, COLOR3, FOREGROUND
 
 ! Fonts
-rofi.font: Hack 12
+rofi.font: Ubuntu Mono 11
 

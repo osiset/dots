@@ -10,6 +10,7 @@ source,destination
 ./.config/neofetch,~/.config/neofetch
 ./.config/dnf/dnf.conf,/etc/dnf/dnf.conf
 ./.config/docker/daemon.json,/etc/docker/daemon.json
+./.config/ranger,~/.config/ranger
 ./etc/systemd/undervolt.service,/etc/systemd/undervolt.server
 ./etc/systemd/undervolt.timer,/etc/systemd/undervolt.timer
 ./etc/X11/xorg.conf.d/20-intel.conf,/etc/X11/xorg.conf.d/20-intel.conf

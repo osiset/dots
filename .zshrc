@@ -11,6 +11,9 @@ export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/.config/composer/vendor/bin:
 # Config home
 export XDG_CONFIG_HOME="$HOME/.config"
 
+# QT5CT
+export QT_QPA_PLATFORMTHEME="qt5ct"
+
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
