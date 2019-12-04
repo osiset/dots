@@ -1,0 +1,10 @@
+[Unit]
+Description=Power savings (oneshot)
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c "echo 'auto' > '/sys/bus/usb/devices/2-3/power/control'; echo 'auto' > '/sys/bus/pci/devices/0000:00:1d.0/power/control'; echo 'auto' > '/sys/bus/pci/devices/0000:02:00.0/power/control'; echo 'auto' > '/sys/block/sda/device/power/control';"
+RemainAfterExit=true
+
+[Install]
+WantedBy=multi-user.target

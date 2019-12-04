@@ -13,6 +13,7 @@ source,destination
 ./.config/ranger,~/.config/ranger
 ./etc/systemd/undervolt.service,/etc/systemd/undervolt.server
 ./etc/systemd/undervolt.timer,/etc/systemd/undervolt.timer
+./etc/systemd/system/powertop-autotune.service,/etc/systemd/system/powertop-autotune.service
 ./etc/X11/xorg.conf.d/20-intel.conf,/etc/X11/xorg.conf.d/20-intel.conf
 ./etc/lightdm/lightdm.conf,/etc/lightdm/lightdm.conf
 ./etc/default/tlp,/etc/default/tlp

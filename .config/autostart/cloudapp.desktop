@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=cloudapp
-Exec=/home/tyler/bin/cloudapp watch
-Type=Application
-Hidden=false
+#Name=cloudapp
+#Exec=/home/tyler/bin/cloudapp watch
+#Type=Application
+#Hidden=false
 

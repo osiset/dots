@@ -1,6 +1,13 @@
 # Editor
 EDITOR=nano
 
+# Flatpak support
+if [ "${XDG_DATA_DIRS#*flatpak}" = "${XDG_DATA_DIRS}" ]; then
+    XDG_DATA_DIRS="${XDG_DATA_HOME:-"$HOME/.local/share"}/flatpak/exports/share:/var/lib/flatpak/exports/share:${XDG_DATA_DIRS:-/usr/local/share:/usr/share}"
+fi
+
+export XDG_DATA_DIRS
+
 # PATH setup
 export ANDROID_HOME="$HOME/Android/Sdk"
 export ANDROID_HOME="$HOME/Android/Sdk"

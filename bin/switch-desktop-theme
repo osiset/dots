@@ -34,6 +34,10 @@ echo "Using ${basename} theme..."
 echo ">> Generating XFCE Terminal theme..."
 ~/bin/xfce-terminal-create-theme "$f" >/dev/null 2>&1
 
+# Re-do PyWal colors based on Xresources
+echo ">> Setting PyWal cache colors..."
+~/bin/xresource-to-pywal >/dev/null 2>&1
+
 # Fix the theme Xresources is pointing to
 echo ">> Setting theme in Xresources..."
 sed -i -E "s|themes/([a-z_-]+)|themes/${basename}|" ~/.Xresources >/dev/null 2>&1

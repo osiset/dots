@@ -14,7 +14,7 @@ set $wk5 "void"
 ###############
 # Fonts
 ###############
-font pango: Ubuntu 10
+font pango: Ubuntu Mono 10
 
 ###############
 # Colors
@@ -45,6 +45,9 @@ focus_follows_mouse yes
 # Back-and-forth by pressing same workspace keybinds
 workspace_auto_back_and_forth yes
 
+# Window title format
+for_window [class=".*"] title_format "<b> %title</b>"
+
 ###############
 # General settings
 ###############
@@ -67,7 +70,7 @@ exec --no-startup-id ~/.config/polybar/launch
 exec --no-startup-id clipit --no-icon --daemon
 
 # Workspace (Code) settings
-exec --no-startuo-id "i3-msg 'workspace code; append_layout ~/.config/i3/layouts/code.json'"
+exec --no-startup-id "i3-msg 'workspace code; append_layout ~/.config/i3/layouts/code.json'"
 
 ###############
 # App bindings
@@ -225,7 +228,6 @@ bindsym $super+m mode "move" focus floating
 # Window rules
 ###############
 # for_window
-#for_window [title="Desktop — Plasma"] kill, floating enable, border none
 for_window [class=".*"] border pixel 4
 for_window [class=nitrogen|Pavucontrol] floating enable
 for_window [class=URxvt|Firefox|libreoffice*|Gimp*|Inkscape|Vlc] focus
@@ -236,22 +238,10 @@ for_window [window_role="Preferences"] floating enable
 for_window [window_role="About"] floating enable 
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
-#for_window [class="plasmashell"] floating enable, border none
-#for_window [class="Plasma"] floating enable, border none
-#for_window [title="plasma-desktop"] floating enable, border none
 for_window [title="win7"] floating enable, border none
-#for_window [class="krunner"] floating enable, border none
-#for_window [class="Kmix"] floating enable, border none
-#for_window [class="Klipper"] floating enable, border none
-#for_window [class="qlipper"] floating enable, border none
 for_window [class="clipit"] floating enable
 for_window [class="Slack" floating] move container to workspace current
-#for_window [class="Plasmoidviewer"] floating enable, border none
-#for_window [class="kcmshell5"] resize set 800px 500px
 for_window [class="Pavucontrol"] resize set 800px 500px
-for_window [class="Galculator"] floating enable
+for_window [class="gnome-calculator"] floating enable
 for_window [class="Slack" floating] move container to workspace current, sticky enable
 
-# Don’t let notifications and non-interactive pop-up windows steal focus
-#no_focus [class="plasmashell" window_type="notification"]
-#no_focus [class="plasmashell" window_type="on_screen_display"]

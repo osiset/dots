@@ -33,3 +33,4 @@ echo -e "$output" > "$output_path_tmp"
 rm "$output_path"
 mv "$output_path_tmp" "$output_path"
 echo "Saved to $output_path"
+

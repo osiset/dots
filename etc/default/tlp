@@ -77,10 +77,10 @@ CPU_HWP_ON_BAT=balance_power
 # Values are stated as a percentage of the available performance.
 # Requires an Intel Core i processor with intel_pstate driver.
 # Default: <none>
-#CPU_MIN_PERF_ON_AC=0
-#CPU_MAX_PERF_ON_AC=100
-#CPU_MIN_PERF_ON_BAT=0
-#CPU_MAX_PERF_ON_BAT=30
+CPU_MIN_PERF_ON_AC=0
+CPU_MAX_PERF_ON_AC=100
+CPU_MIN_PERF_ON_BAT=0
+CPU_MAX_PERF_ON_BAT=60
 
 # Set the CPU "turbo boost" feature: 0=disable, 1=allow
 # Requires an Intel Core i processor.
@@ -88,8 +88,8 @@ CPU_HWP_ON_BAT=balance_power
 # - This may conflict with your distribution's governor settings
 # - A value of 1 does *not* activate boosting, it just allows it
 # Default: <none>
-#CPU_BOOST_ON_AC=1
-#CPU_BOOST_ON_BAT=0
+CPU_BOOST_ON_AC=1
+CPU_BOOST_ON_BAT=0
 
 # Minimize number of used CPU cores/hyper-threads under light load conditions:
 #   0=disable, 1=enable.
@@ -322,7 +322,7 @@ RESTORE_DEVICE_STATE_ON_STARTUP=0
 # Radio devices to enable on startup: bluetooth, wifi, wwan.
 # Separate multiple devices with spaces.
 # Default: <none>
-#DEVICES_TO_ENABLE_ON_STARTUP="wifi"
+DEVICES_TO_ENABLE_ON_STARTUP="bluetooth"
 
 # Radio devices to disable on shutdown: bluetooth, wifi, wwan.
 # (workaround for devices that are blocking shutdown).
@@ -352,11 +352,11 @@ RESTORE_DEVICE_STATE_ON_STARTUP=0
 # START_CHARGE_THRESH value and stops when exceeding the STOP_CHARGE_THRESH value.
 # Main / Internal battery (values in %)
 # Default: <none>
-START_CHARGE_THRESH_BAT0=75
+START_CHARGE_THRESH_BAT0=80
 STOP_CHARGE_THRESH_BAT0=99
 # Ultrabay / Slice / Replaceable battery (values in %)
 # Default: <none>
-START_CHARGE_THRESH_BAT1=75
+START_CHARGE_THRESH_BAT1=80
 STOP_CHARGE_THRESH_BAT1=93
 
 # Restore charge thresholds when AC is unplugged: 0=disable, 1=enable.
