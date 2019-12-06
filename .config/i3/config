@@ -228,7 +228,7 @@ bindsym $super+m mode "move" focus floating
 # Window rules
 ###############
 # for_window
-for_window [class=".*"] border pixel 4
+for_window [class=".*"] border pixel 5
 for_window [class=nitrogen|Pavucontrol] floating enable
 for_window [class=URxvt|Firefox|libreoffice*|Gimp*|Inkscape|Vlc] focus
 for_window [window_role="pop-up"] floating enable
