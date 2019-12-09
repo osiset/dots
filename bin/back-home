@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Used to change the system when back home (from traveling).
+# Sets timezone among other things.
+#
+# Usage: `back-home`
+
+# Set the timezone
+echo ">> Setting timezone..."
+sudo timedatectl set-timezone America/St_Johns
+
+# Tell OW we are home
+echo ">> Adjusting weather location..."
+sed -i 's/#export OW_IS_HOME/export OW_IS_HOME/' ~/.secret
+
+# Restart polybar
+echo ">> Restarting Polybar..."
+re_polybar
+
+echo "Done!"
+

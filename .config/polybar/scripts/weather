@@ -28,17 +28,20 @@ UNITS="metric"
 SYMBOL="°C"
 API="https://api.openweathermap.org/data/2.5"
 
-if [ -z "$OW_LAT" ]; then
+# If OW_IS_HOME is not set, then find out where we are
+if [ -z "$OW_IS_HOME" ]; then
     location=$(curl -sf https://location.services.mozilla.com/v1/geolocate?key=geoclue)
     if [ -n "$location" ]; then
         location_lat="$(echo "$location" | jq '.location.lat')"
         location_lon="$(echo "$location" | jq '.location.lng')"
     fi;
 else
+    # Use preset home base lat/long
     location_lat="$OW_LAT"
     location_lon="$OW_LON"
 fi;
 
+# Get the weather based on the lat/long
 weather=$(curl -sf "$API/weather?appid=$OW_KEY&lat=$location_lat&lon=$location_lon&units=$UNITS")
 if [ -n "$weather" ]; then
     weather_temp=$(echo "$weather" | jq ".main.temp" | cut -d "." -f 1)
@@ -46,11 +49,14 @@ if [ -n "$weather" ]; then
     weather_city_id=$(echo "$weather" | jq ".id")
 
     if [ "$1" == "open" ]; then
+        # Click weather to open weather in browser
         xdg-open "https://openweathermap.org/city/$weather_city_id" >/dev/null 2>&1
     else
-        icon=$(get_icon "$weather_icon")
-        # Crackspot - #fffa50
-        echo -e "$icon" "$weather_temp""$SYMBOL"
+        # Don't show icon anymore, just text
+        # icon=$(get_icon "$weather_icon")
+        # echo -e "$icon" "$weather_temp""$SYMBOL"
+
+        echo -e "$weather_temp""$SYMBOL"
     fi;
 fi
 

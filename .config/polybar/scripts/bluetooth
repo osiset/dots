@@ -2,7 +2,7 @@
 bluetoothctl | while read -r; do
     active=$(hciconfig -a | wc -l)
     if [[ "$active" > 0 ]]; then
-        printf "On"
+        printf "ON"
         devices_paired=$(bluetoothctl paired-devices | grep Device | cut -d ' ' -f 2)
         counter=0
 
@@ -23,7 +23,7 @@ bluetoothctl | while read -r; do
 
         printf "\n"
     else
-        printf "Off"
+        printf "OFF"
         printf "\n"
     fi
 done

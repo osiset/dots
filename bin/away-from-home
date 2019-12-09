@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# Used to change the system when out of home (traveling away).
+# Sets timezone among other things.
+#
+# Usage: `away-from-home (timezone)`
+
+# Set the timezone
+echo ">> Setting timezone..."
+sudo timedatectl set-timezone "$1"
+
+# Tell OW we are not home
+echo ">> Adjusting weather location..."
+sed -i 's/export OW_IS_HOME/#export OW_IS_HOME/' ~/.secret
+
+# Restart polybar
+echo ">> Restarting Polybar..."
+re_polybar
+
+echo "Done!"
+
