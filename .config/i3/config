@@ -21,12 +21,12 @@ font pango: Ubuntu Mono 10
 ###############
 set_from_resource $cfg foreground #baa0a2
 set_from_resource $cbg backgrounf #160d0e
-set_from_resource $cred color1 #bd4549
-set_from_resource $cyellow color3 #F6EA82
+set_from_resource $cred color5 #bd4549
+set_from_resource $cyellow color2 #F6EA82
 set_from_resource $cdullred color2 #44272a
 
 # class                 border   backgr.  text    indicator child_border
-client.focused          $cred    $cred    #ffffff #e8e382   $cred
+client.focused          $cred    $cred    #ffffff $cyellow  $cred
 client.focused_inactive #333333  #5f676a  #ffffff #484e50   #5f676a
 client.unfocused        $cdulled $cdulled #888888 $cdulled  #222222
 client.urgent           #2f343a  #900000  #ffffff #900000   #900000

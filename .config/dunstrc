@@ -69,7 +69,7 @@
     # the top and down respectively.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "300x10-15-40"
+    geometry = "300x10-15-50"
 
     # Shrink window if it's smaller than the width.  Will be ignored if
     # width is 0.
@@ -155,7 +155,7 @@
 
     # Frame
     frame_width = 3
-    frame_color = "#9A3057"
+    frame_color = "#ff3333"
 
 [shortcuts]
     # Shortcuts are specified as [modifier+][modifier+]...key
@@ -178,18 +178,18 @@
     context = ctrl+shift+period
 
 [urgency_low]
-    background = "#0b0d1f"
-    foreground = "#8acfdd"
+    background = "#1f2430"
+    foreground = "#bfbab0"
     timeout = 10
 
 [urgency_normal]
-    background = "#0b0d1f"
-    foreground = "#8acfdd"
+    background = "#1f2430"
+    foreground = "#bfbab0"
     timeout = 10
 
 [urgency_critical]
-    background = "#0b0d1f"
-    foreground = "#8acfdd"
+    background = "#1f2430"
+    foreground = "#bfbab0"
     timeout = 0
 
 [spotify]
