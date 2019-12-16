@@ -12,14 +12,11 @@ export XDG_DATA_DIRS
 export ANDROID_HOME="$HOME/Android/Sdk"
 export ANDROID_HOME="$HOME/Android/Sdk"
 export GOPATH="$HOME/Development/Go"
-#export GO111MODULE=on
+# export GO111MODULE=on
 export PATH="$PATH:$HOME/bin:$HOME/.local/bin:$HOME/.config/composer/vendor/bin:$HOME/.npm-global/bin:$PATH:/usr/local/go/bin:$GOPATH/bin:$HOME/Development/gcc-arm/bin:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools:$ANDROID_HOME/tools/bin:$HOME/.rvm/bin"
 
 # Config home
 export XDG_CONFIG_HOME="$HOME/.config"
-
-# QT5CT
-export QT_QPA_PLATFORMTHEME="qt5ct"
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -121,10 +118,10 @@ source $HOME/.alias
 source ~/.secret
 
 # SSH persistence
-if [ ! -S ~/.ssh/ssh_auth_sock ]; then
-        eval `ssh-agent`
-        ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
-fi
-export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
-ssh-add -l > /dev/null || ssh-add
+# if [ ! -S ~/.ssh/ssh_auth_sock ]; then
+#        eval `ssh-agent`
+#        ln -sf "$SSH_AUTH_SOCK" ~/.ssh/ssh_auth_sock
+# fi
+# export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+# ssh-add -l > /dev/null || ssh-add
 

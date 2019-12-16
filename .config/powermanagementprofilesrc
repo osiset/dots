@@ -24,7 +24,7 @@ idleTime=120000
 [Battery][HandleButtonEvents]
 lidAction=1
 powerButtonAction=16
-triggerLidActionWhenExternalMonitorPresent=false
+triggerLidActionWhenExternalMonitorPresent=true
 
 [LowBattery]
 icon=battery-low

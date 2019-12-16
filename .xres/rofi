@@ -24,7 +24,7 @@ rofi.lines: 5
 rofi.eh: 2
 
 ! Padding
-rofi.padding: 100
+rofi.padding: 80
 
 ! Full screen
 rofi.fullscreen: false
@@ -43,7 +43,7 @@ rofi.hide-scrollbar: true
 !                  background, border, separator
 rofi.color-window: BACKGROUND, COLOR1, COLOR3
 ! State:           'bg',     'fg',     'bgalt',  'hlbg',   'hlfg'
-rofi.color-normal: BACKGROUND, FOREGROUND, BACKGROUND, BACKGROUND, COLOR3
+rofi.color-normal: BACKGROUND, FOREGROUND, BACKGROUND, COLOR5, COLOR0
 
 ! Fonts
 rofi.font: Ubuntu Mono 11

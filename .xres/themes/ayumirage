@@ -8,7 +8,7 @@
 #define COLOR2 #bae67e
 #define COLOR3 #ffd580
 #define COLOR4 #73d0ff
-#define COLOR5 #f28779
+#define COLOR5 #D4BFFF
 #define COLOR6 #95e6cb
 #define COLOR7 #ffffff
 #define COLOR8 #292b30
@@ -16,7 +16,7 @@
 #define COLOR10 #cee6ac
 #define COLOR11 #ffe6b3
 #define COLOR12 #a6e1ff
-#define COLOR13 #ffd6da
+#define COLOR13 #DDD4F1
 #define COLOR14 #ffffff
 #define COLOR15 #ffffff
 

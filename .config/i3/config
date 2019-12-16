@@ -19,11 +19,11 @@ font pango: Ubuntu Mono 10
 ###############
 # Colors
 ###############
-set_from_resource $cfg foreground #baa0a2
-set_from_resource $cbg backgrounf #160d0e
-set_from_resource $cred color5 #bd4549
-set_from_resource $cyellow color2 #F6EA82
-set_from_resource $cdullred color2 #44272a
+set_from_resource $cfg foreground #fcfcfc
+set_from_resource $cbg background #160d0e
+set_from_resource $cred color12 #3daee9
+set_from_resource $cyellow color11 #fdbc4b
+set_from_resource $cdullred color11 #eff0f1
 
 # class                 border   backgr.  text    indicator child_border
 client.focused          $cred    $cred    #ffffff $cyellow  $cred
@@ -46,59 +46,62 @@ focus_follows_mouse yes
 workspace_auto_back_and_forth yes
 
 # Window title format
-for_window [class=".*"] title_format "<b> %title</b>"
+# for_window [class=".*"] title_format "<b> %title</b>"
 
 ###############
 # General settings
 ###############
 ## Try to kill Plasma
-#exec --no-startup-id wmctrl -c Plasma
+exec --no-startup-id wmctrl -c Plasma
 
 # Run Compton for composition
-exec --no-startup-id compton -b --config ~/.config/compton.conf
+# exec --no-startup-id compton -b --config ~/.config/compton.conf
 
 # Run Dunst (notify)
-exec --no-startup-id dunst -conf ~/.config/dunstrc
+# exec --no-startup-id dunst -conf ~/.config/dunstrc
 
 # Run Nitrogen for wallpaper
-exec --no-startup-id "sh -c 'sleep 5; exec nitrogen --restore'"
+# exec --no-startup-id "sh -c 'sleep 5; exec nitrogen --restore'"
+exec --no-startup-id /usr/bin/xsetroot -solid "#7f8c8d"
 
 # Run Polybar
-exec --no-startup-id ~/.config/polybar/launch
+# exec --no-startup-id ~/.config/polybar/launch
 
 # Run Clipboard (ctl+alt+c)
-exec --no-startup-id clipit --no-icon --daemon
+# exec --no-startup-id clipit --no-icon --daemon
 
 # Workspace (Code) settings
-exec --no-startup-id "i3-msg 'workspace code; append_layout ~/.config/i3/layouts/code.json'"
+# exec --no-startup-id "i3-msg 'workspace code; append_layout ~/.config/i3/layouts/code.json'"
 
 ###############
 # App bindings
 ###############
 # Terminal
-bindsym $super+Return exec xfce4-terminal
+# bindsym $super+Return exec xfce4-terminal
+bindsym $super+Return exec konsole
 
 # Rofi for quick access (drun)
-bindsym $super+x exec rofi -show drun
+# bindsym $super+x exec rofi -show drun
 
 # Rofi for quick access (windows)
-bindsym $super+shift+x exec rofi -show window
+# bindsym $super+shift+x exec rofi -show window
 
 # Firefox for browsing
 bindsym $super+Shift+w exec firefox
 
 # Files
 # bindsym $super+Shift+f exec thunar
-bindsym $super+Shift+f exec xfce4-terminal -e 'bash -c "ranger"'
+# bindsym $super+Shift+f exec xfce4-terminal -e 'bash -c "ranger"'
+bindsym $super+Shift+f exec dolphin
 
 # VSCode for programming
 bindsym $super+Shift+c exec code
 
 # PulseAudio quick access
-bindsym $super+Shift+a exec ~/bin/audio-switch
+# bindsym $super+Shift+a exec ~/bin/audio-switch
 
 # Logout actions
-bindsym $ctl+$alt+Delete exec xfce4-session-logout
+# bindsym $ctl+$alt+Delete exec xfce4-session-logout
 
 # Screenshots
 bindsym Print exec flameshot full -c -p ~/Pictures/Screenshots
@@ -107,7 +110,7 @@ bindsym Print exec flameshot full -c -p ~/Pictures/Screenshots
 bindsym $super+e exec flameshot gui -p ~/Pictures/Screenshots
 
 # Restart Polybar
-bindsym $super+Shift+p exec ~/.config/polybar/launch
+# bindsym $super+Shift+p exec ~/.config/polybar/launch
 
 ###############
 # Keybinds
@@ -171,14 +174,14 @@ bindsym $super+Tab workspace back_and_forth
 bindsym $super+Shift+r restart
 
 # Pulse Audio controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && paplay --volume=40000 --device=@DEFAULT_SINK@ /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && paplay --volume=40000 --device=@DEFAULT_SINK@ /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && paplay --volume=40000 --device=@DEFAULT_SINK@ /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
-bindsym XF86AudioMicMute exec --no-startup-id amixer set Capture toggle && paplay --volume=40000 --device=@DEFAULT_SINK@ /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
+# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && paplay --volume=40000 --device=@DEFAULT_SINK@ /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
+# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && paplay --volume=40000 --device=@DEFAULT_SINK@ /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
+# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && paplay --volume=40000 --device=@DEFAULT_SINK@ /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
+# bindsym XF86AudioMicMute exec --no-startup-id amixer set Capture toggle && paplay --volume=40000 --device=@DEFAULT_SINK@ /usr/share/sounds/freedesktop/stereo/audio-volume-change.oga
 
 # Sreen brightness controls
-#bindsym XF86MonBrightnessUp exec xbacklight -inc 1 # increase screen brightness
-#bindsym XF86MonBrightnessDown exec xbacklight -dec 1 # decrease screen brightness
+# bindsym XF86MonBrightnessUp exec xbacklight -inc 1 # increase screen brightness
+# bindsym XF86MonBrightnessDown exec xbacklight -dec 1 # decrease screen brightness
 
 # Media player controls
 bindsym $ctl+$alt+Down exec playerctl play-pause
@@ -229,7 +232,7 @@ bindsym $super+m mode "move" focus floating
 ###############
 # for_window
 for_window [class=".*"] border pixel 5
-for_window [class=nitrogen|Pavucontrol] floating enable
+for_window [class=nitrogen|Pavucontrol|feh] floating enable
 for_window [class=URxvt|Firefox|libreoffice*|Gimp*|Inkscape|Vlc] focus
 for_window [window_role="pop-up"] floating enable
 for_window [window_role="bubble"] floating enable
@@ -244,4 +247,19 @@ for_window [class="Slack" floating] move container to workspace current
 for_window [class="Pavucontrol"] resize set 800px 500px
 for_window [class="gnome-calculator"] floating enable
 for_window [class="Slack" floating] move container to workspace current, sticky enable
+
+# for_window kde
+for_window [title="Desktop — Plasma"] kill, floating enable, border none
+for_window [class="plasmashell"] floating enable, border none
+for_window [class="Plasma"] floating enable, border none
+for_window [title="plasma-desktop"] floating enable, border none
+for_window [class="krunner"] floating enable, border none
+for_window [class="Kmix"] floating enable, border none
+for_window [class="qlipper"] floating enable, border none
+for_window [class="Plasmoidviewer"] floating enable, border none
+for_window [class="kcmshell5"] resize set 800px 500px
+for_window [class="Pavucontrol"] resize set 800px 500px
+no_focus [class="plasmashell" window_type="notification"]
+no_focus [class="plasmashell" window_type="on_screen_display"]
+
 
