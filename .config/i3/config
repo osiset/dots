@@ -23,12 +23,12 @@ set_from_resource $cfg foreground #fcfcfc
 set_from_resource $cbg background #160d0e
 set_from_resource $cred color12 #3daee9
 set_from_resource $cyellow color11 #fdbc4b
-set_from_resource $cdullred color11 #eff0f1
+set_from_resource $cdullred color8 #eff0f1
 
 # class                 border   backgr.  text    indicator child_border
 client.focused          $cred    $cred    #ffffff $cyellow  $cred
-client.focused_inactive #333333  #5f676a  #ffffff #484e50   #5f676a
-client.unfocused        $cdulled $cdulled #888888 $cdulled  #222222
+client.focused_inactive $cdulled $cdulled  #ffffff #484e50   #5f676a
+client.unfocused        $cdulled $cdulled #ffffff $484e50  #222222
 client.urgent           #2f343a  #900000  #ffffff #900000   #900000
 client.placeholder      #000000  #0c0c0c  #ffffff #000000   #0c0c0c
 client.background       #ffffff
@@ -46,7 +46,7 @@ focus_follows_mouse yes
 workspace_auto_back_and_forth yes
 
 # Window title format
-# for_window [class=".*"] title_format "<b> %title</b>"
+for_window [class=".*"] title_format "<b> %title</b>"
 
 ###############
 # General settings
@@ -231,7 +231,7 @@ bindsym $super+m mode "move" focus floating
 # Window rules
 ###############
 # for_window
-for_window [class=".*"] border pixel 5
+for_window [class=".*"] border normal 5
 for_window [class=nitrogen|Pavucontrol|feh] floating enable
 for_window [class=URxvt|Firefox|libreoffice*|Gimp*|Inkscape|Vlc] focus
 for_window [window_role="pop-up"] floating enable
@@ -259,6 +259,7 @@ for_window [class="qlipper"] floating enable, border none
 for_window [class="Plasmoidviewer"] floating enable, border none
 for_window [class="kcmshell5"] resize set 800px 500px
 for_window [class="Pavucontrol"] resize set 800px 500px
+for_window [class="plasmashell" window_type="notification"] move position 1580 10
 no_focus [class="plasmashell" window_type="notification"]
 no_focus [class="plasmashell" window_type="on_screen_display"]
 

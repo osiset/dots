@@ -1,7 +1,6 @@
 !! Cursors
 ! Theme
-Xcursor.theme: Breeze-Snow
+Xcursor.theme: Breeze_Snow
 
 ! Size
-Xcursor.size: 16
-
+Xcursor.size: 24
