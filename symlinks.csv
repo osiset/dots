@@ -11,6 +11,7 @@ source,destination
 ./.config/dnf/dnf.conf,/etc/dnf/dnf.conf
 ./.config/docker/daemon.json,/etc/docker/daemon.json
 ./.config/ranger,~/.config/ranger
+./.config/kargos,~/.config/kargos
 ./etc/systemd/undervolt.service,/etc/systemd/undervolt.server
 ./etc/systemd/undervolt.timer,/etc/systemd/undervolt.timer
 ./etc/systemd/system/powertop-autotune.service,/etc/systemd/system/powertop-autotune.service
