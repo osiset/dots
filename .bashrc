@@ -1,4 +1,6 @@
 export EDITOR=/usr/bin/nano
+export GTK_USE_PORTAL=1
+
 test -s ~/.alias && . ~/.alias || true
 . ~/.secret
 

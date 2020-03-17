@@ -352,12 +352,12 @@ DEVICES_TO_ENABLE_ON_STARTUP="bluetooth"
 # START_CHARGE_THRESH value and stops when exceeding the STOP_CHARGE_THRESH value.
 # Main / Internal battery (values in %)
 # Default: <none>
-START_CHARGE_THRESH_BAT0=80
-STOP_CHARGE_THRESH_BAT0=99
+START_CHARGE_THRESH_BAT0=75
+STOP_CHARGE_THRESH_BAT0=81
 # Ultrabay / Slice / Replaceable battery (values in %)
 # Default: <none>
-START_CHARGE_THRESH_BAT1=80
-STOP_CHARGE_THRESH_BAT1=93
+START_CHARGE_THRESH_BAT1=85
+STOP_CHARGE_THRESH_BAT1=95
 
 # Restore charge thresholds when AC is unplugged: 0=disable, 1=enable.
 # Default: 0

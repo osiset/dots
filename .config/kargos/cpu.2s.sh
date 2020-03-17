@@ -8,4 +8,4 @@ first=$(echo "$result" | awk -F'.' '{printf "%02d",$1}')
 second=$(echo "$result" | awk -F'.' '{print substr($2,1,2)}')
 
 # Output the result
-echo "CPU ${first}.${second}% | size=11"
+echo " ${first}.${second}% | size=12"

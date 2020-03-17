@@ -12,5 +12,5 @@ if [ "$status" -gt 0 ]; then
     total=$(echo "$bat0 + $bat1" | bc)
 fi
 
-echo "DRAIN ${total}W | size=11"
+echo " ${total}W | size=12"
 

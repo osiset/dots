@@ -6,4 +6,4 @@
 result=$(cat /sys/class/thermal/thermal_zone0/temp | awk '{printf "%d", $1/1000}')
 
 # Output the result
-echo "TEMP $result°C | size=11"
+echo " $result°C | size=12"

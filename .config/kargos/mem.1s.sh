@@ -9,4 +9,4 @@
 result=$(free -m | awk 'NR==2{printf "%sMB", $3}')
 
 # Output the result
-echo "MEM $result | size=11"
+echo " $result | size=12"

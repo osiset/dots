@@ -47,7 +47,7 @@ focus_follows_mouse yes
 workspace_auto_back_and_forth yes
 
 # Window title format
-for_window [class=".*"] title_format "<b> %title</b>"
+# for_window [class=".*"] title_format "<b> %title</b>"
 
 ###############
 # General settings
@@ -56,7 +56,7 @@ for_window [class=".*"] title_format "<b> %title</b>"
 exec --no-startup-id wmctrl -c Plasma
 
 # Run Compton for composition
-# exec --no-startup-id compton -b --config ~/.config/compton.conf
+exec --no-startup-id "sleep 10 && compton -b --config ~/.config/compton.conf"
 
 # Run Dunst (notify)
 # exec --no-startup-id dunst -conf ~/.config/dunstrc
@@ -260,7 +260,7 @@ for_window [class="qlipper"] floating enable, border none
 for_window [class="Plasmoidviewer"] floating enable, border none
 for_window [class="kcmshell5"] resize set 800px 500px
 for_window [class="Pavucontrol"] resize set 800px 500px
-for_window [class="plasmashell" window_type="notification"] move position 1580 10
+for_window [class="plasmashell" window_type="notification"] move position 1650 10
 no_focus [class="plasmashell" window_type="notification"]
 no_focus [class="plasmashell" window_type="on_screen_display"]
 

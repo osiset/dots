@@ -1,6 +1,9 @@
 # Editor
 export EDITOR=/usr/bin/nano
 
+# KDE
+export GTK_USE_PORTAL=1
+
 # Aliases
 source $HOME/.alias
 
